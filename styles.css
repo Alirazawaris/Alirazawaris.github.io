@@ -1,109 +1,169 @@
-/* 3D / Layered modern portfolio style
-   Lightweight, responsive, no external fonts.
-   Tweak colors under :root.
-*/
+/* Cybersecurity Portfolio Styling - Ali Raza */
 
-:root{
-  --bg:#071025;
-  --panel:#0b1220;
-  --muted:#9fb0c9;
-  --accent:#60a5fa;
-  --glass: rgba(255,255,255,0.03);
-  --card-shadow: 0 18px 30px rgba(2,8,23,0.6);
-  --card-shadow-soft: 0 6px 18px rgba(2,8,23,0.45);
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600;800&family=Inter:wght@300;400;600&display=swap');
+
+:root {
+  --bg-dark: #0b0f1a;
+  --bg-card: rgba(255, 255, 255, 0.05);
+  --text-primary: #ffffff;
+  --text-secondary: #9baec8;
+  --accent: #00f7ff;
+  --accent2: #ff00e6;
+  --glow: 0 0 15px var(--accent), 0 0 25px var(--accent2);
 }
 
-*{box-sizing:border-box}
-html,body{height:100%}
-body{
-  margin:0;
-  font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
-  background: radial-gradient(1200px 600px at 10% 10%, rgba(9,30,60,0.35), transparent 8%),
-              linear-gradient(180deg, #04101b 0%, var(--bg) 100%);
-  color:#dbeafe;
-  -webkit-font-smoothing:antialiased;
-  -moz-osx-font-smoothing:grayscale;
-  line-height:1.5;
-  padding-bottom:40px;
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
-/* Page wrapper */
-.page-wrap{max-width:1100px;margin:0 auto;padding:28px}
-
-/* Hero */
-.hero{padding:44px 18px 10px; position:relative; overflow:visible}
-.hero-inner{display:grid;grid-template-columns:1fr 280px;gap:20px;align-items:center}
-@media (max-width:880px){ .hero-inner{grid-template-columns:1fr;}}
-.logo-blob{
-  width:220px;height:220px;border-radius:20px;
-  background: linear-gradient(135deg, rgba(96,165,250,0.14), rgba(120,85,255,0.08));
-  box-shadow: -30px 40px 90px rgba(2,8,23,0.7), inset 0 2px 12px rgba(255,255,255,0.02);
-  transform: rotate(-12deg) translateY(-8px);
-  filter: blur(2px);
-  margin-left: -16px;
-}
-.intro-card{
-  padding:22px;border-radius:16px;background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
-  box-shadow: var(--card-shadow);
-  transform: translateZ(40px);
-  border: 1px solid rgba(255,255,255,0.03);
-}
-.name{font-size:34px;margin:0 0 6px}
-.tagline{color:var(--muted);margin:0 0 14px}
-.cta-row{display:flex;gap:12px;flex-wrap:wrap}
-.btn{
-  padding:10px 14px;border-radius:10px;text-decoration:none;font-weight:600;display:inline-block;
-  border:1px solid rgba(255,255,255,0.04);backdrop-filter: blur(2px);
-}
-.btn.primary{
-  background: linear-gradient(90deg,var(--accent), #7c6bff);
-  color:#071028;border:0;box-shadow: 0 8px 18px rgba(96,165,250,0.12), 0 2px 6px rgba(0,0,0,0.4);
-}
-.btn.ghost{background:transparent;color:var(--accent);border:1px solid rgba(96,165,250,0.12)}
-
-/* Right badge card */
-.badge-card{justify-self:end;padding:14px;border-radius:14px;background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));box-shadow:var(--card-shadow-soft);text-align:center}
-.badge{font-weight:700;color:#0b1220;background:#bfe1ff;padding:10px;border-radius:10px;display:inline-block;margin-bottom:6px}
-.badge-card .small{color:var(--muted);font-size:13px}
-
-/* Main content */
-.container{margin-top:28px;display:grid;grid-template-columns:1fr;gap:18px}
-.card{
-  padding:18px;border-radius:12px;background:linear-gradient(180deg,var(--glass), rgba(255,255,255,0.01));
-  border:1px solid rgba(255,255,255,0.03);
-  box-shadow: var(--card-shadow-soft);
+body {
+  font-family: 'Inter', sans-serif;
+  background: radial-gradient(circle at top left, #050811, #0b0f1a);
+  color: var(--text-primary);
+  line-height: 1.6;
+  overflow-x: hidden;
 }
 
-/* Project grid */
-.grid{display:grid;gap:16px}
-@media(min-width:820px){
-  .grid{grid-template-columns:repeat(2,1fr)}
+/* HERO SECTION */
+.hero {
+  text-align: center;
+  padding: 6rem 2rem 4rem;
+  background: linear-gradient(145deg, #0b0f1a, #11182b);
 }
-.project-card{padding:16px;border-radius:12px}
 
-/* Skills list */
-.skills{display:flex;flex-wrap:wrap;gap:8px;margin:12px 0 0;padding:0;list-style:none}
-.skills li{background:rgba(255,255,255,0.02);padding:8px 10px;border-radius:8px;color:var(--muted);font-size:14px}
+.title {
+  font-family: 'Orbitron', sans-serif;
+  font-size: 3rem;
+  color: var(--accent);
+  text-shadow: var(--glow);
+  margin-bottom: 0.5rem;
+}
 
-/* 3D tilt effect when hovering cards */
-.3d-card{transition:transform 0.32s cubic-bezier(.2,.8,.2,1), box-shadow 0.32s}
-.3d-card:hover{transform: translateY(-10px) rotateX(4deg) translateZ(14px); box-shadow: 0 28px 50px rgba(2,8,23,0.7)}
-.project-card:hover{transform: translateY(-8px) rotateX(3deg) translateZ(10px)}
+.subtitle {
+  font-size: 1.2rem;
+  color: var(--text-secondary);
+  max-width: 600px;
+  margin: 0 auto 2rem;
+}
 
-/* Contact */
-.contact-card a{color:var(--accent);text-decoration:underline}
-.ethics{margin-top:12px;color:var(--muted);font-size:13px}
+.actions .btn {
+  display: inline-block;
+  margin: 0.5rem;
+  padding: 0.8rem 1.6rem;
+  border-radius: 30px;
+  font-weight: 600;
+  text-decoration: none;
+  transition: all 0.3s ease;
+}
 
-/* Footer */
-.site-footer{text-align:center;margin-top:26px;color:var(--muted);font-size:13px}
+.btn-primary {
+  background: var(--accent);
+  color: #000;
+  box-shadow: var(--glow);
+}
 
-/* Accessibility helpers */
-a:focus, button:focus, input:focus, textarea:focus{outline:2px solid rgba(96,165,250,0.18);outline-offset:3px}
+.btn-primary:hover {
+  background: var(--accent2);
+  color: #fff;
+}
 
-/* Responsive tweaks */
-@media (max-width:480px){
-  .name{font-size:24px}
-  .logo-blob{display:none}
-  .hero-inner{grid-template-columns:1fr}
-  .badge-card{justify-self:start}
+.btn-outline {
+  border: 2px solid var(--accent);
+  color: var(--accent);
+}
+
+.btn-outline:hover {
+  border-color: var(--accent2);
+  color: var(--accent2);
+}
+
+/* SECTION STYLING */
+section {
+  padding: 4rem 2rem;
+  max-width: 900px;
+  margin: 2rem auto;
+  background: var(--bg-card);
+  border-radius: 16px;
+  backdrop-filter: blur(10px);
+  box-shadow: 0 0 25px rgba(0, 247, 255, 0.2);
+  transition: transform 0.3s ease;
+}
+
+section:hover {
+  transform: translateY(-5px) scale(1.01);
+}
+
+section h2 {
+  font-family: 'Orbitron', sans-serif;
+  font-size: 2rem;
+  color: var(--accent);
+  text-align: center;
+  margin-bottom: 1.5rem;
+}
+
+/* LISTS */
+ul {
+  list-style: none;
+  padding-left: 0;
+}
+
+ul li {
+  margin: 0.6rem 0;
+  position: relative;
+  padding-left: 1.5rem;
+}
+
+ul li::before {
+  content: "▶";
+  position: absolute;
+  left: 0;
+  color: var(--accent2);
+  font-size: 0.8rem;
+}
+
+/* PROJECT CARDS */
+.projects-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 2rem;
+}
+
+.project-card {
+  background: rgba(255, 255, 255, 0.06);
+  border-radius: 12px;
+  padding: 1.5rem;
+  transition: all 0.3s ease;
+  box-shadow: 0 0 10px rgba(0, 247, 255, 0.1);
+}
+
+.project-card:hover {
+  transform: translateY(-6px) scale(1.02);
+  box-shadow: 0 0 20px rgba(255, 0, 230, 0.4);
+}
+
+.project-card h3 {
+  color: var(--accent);
+  margin-bottom: 0.6rem;
+}
+
+/* CONTACT */
+.contact-card a {
+  color: var(--accent);
+  text-decoration: none;
+  transition: color 0.3s;
+}
+
+.contact-card a:hover {
+  color: var(--accent2);
+}
+
+/* FOOTER */
+.footer {
+  text-align: center;
+  padding: 2rem;
+  font-size: 0.85rem;
+  color: var(--text-secondary);
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
 }
