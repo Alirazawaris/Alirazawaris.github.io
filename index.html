@@ -1,133 +1,287 @@
-/* styles.css - optimized for mobile & desktop */
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>CyberSecure Solutions — Company Portfolio</title>
+  <meta name="description" content="CyberSecure Solutions — Team of ethical hackers providing pentests, cloud audits, malware removal and incident response." />
+  <meta property="og:title" content="CyberSecure Solutions">
+  <meta property="og:description" content="We secure applications, cloud and networks — redacted reports available.">
+  <meta property="og:image" content="https://Alirazawaris.github.io/og-image.png">
+  <meta name="twitter:card" content="summary_large_image">
 
-/* Fonts (system stack + fallback). If you want Orbitron, Inter add Google fonts */
-:root{
-  --bg-1:#020418;
-  --bg-2:#06102a;
-  --card:#081422;
-  --muted:#9fb7d3;
-  --accent1:#00f7ff;
-  --accent2:#ff00e6;
-  --glass: rgba(255,255,255,0.02);
-  --radius:14px;
-}
+  <!-- FontAwesome icons (free kit) -->
+  <script src="https://kit.fontawesome.com/a2e0e9e6f2.js" crossorigin="anonymous"></script>
 
-/* Reset */
-*{box-sizing:border-box}
-html,body{height:100%}
-body{
-  margin:0;
-  font-family: Inter, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
-  background: linear-gradient(180deg,var(--bg-1),var(--bg-2));
-  color:#eaf6ff;
-  -webkit-font-smoothing:antialiased;
-  -moz-osx-font-smoothing:grayscale;
-  line-height:1.5;
-}
+  <!-- Main stylesheet -->
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <!-- NAVBAR (fixed) -->
+  <header class="navbar" role="banner">
+    <div class="brand" aria-hidden="false">CyberSecure Solutions</div>
 
-/* Utility containers */
-.container{max-width:1100px;margin:0 auto;padding:0 20px}
-.section{padding:56px 0}
-.center{text-align:center}
-.muted{color:var(--muted)}
-.small-note{color:var(--muted);font-size:0.9rem;margin-top:10px}
+    <nav aria-label="Main navigation" class="nav">
+      <ul>
+        <li><a href="#home" class="nav-link">Home</a></li>
+        <li><a href="#about" class="nav-link">About</a></li>
+        <li><a href="#services" class="nav-link">Services</a></li>
+        <li><a href="#portfolio" class="nav-link">Portfolio</a></li>
+        <li><a href="#contact" class="nav-link">Contact</a></li>
+      </ul>
+    </nav>
 
-/* NAVBAR */
-.navbar{
-  position:fixed;left:0;right:0;top:0;
-  display:flex;align-items:center;justify-content:space-between;
-  gap:10px;padding:12px 20px;background:linear-gradient(180deg, rgba(2,6,15,0.72), rgba(2,6,15,0.45));
-  border-bottom:1px solid rgba(255,255,255,0.02);backdrop-filter: blur(6px);z-index:1100;
-}
-.brand{font-family: 'Orbitron', sans-serif;color:var(--accent1);font-weight:700;letter-spacing:0.6px}
-.nav ul{list-style:none;display:flex;gap:18px;margin:0;padding:0}
-.nav a{color:rgba(255,255,255,0.9);text-decoration:none;padding:8px 10px;border-radius:8px;transition:all .18s}
-.nav a:hover,.nav a.active{color:var(--accent1);background:rgba(255,255,255,0.02)}
+    <button id="nav-toggle" aria-label="Open menu" class="nav-toggle" aria-expanded="false">
+      <span class="hamburger"></span>
+    </button>
+  </header>
 
-/* mobile nav toggle */
-.nav-toggle{display:none;background:transparent;border:0;color:inherit}
-.hamburger{width:20px;height:2px;background:var(--muted);display:block;position:relative}
-.hamburger::after,.hamburger::before{content:"";position:absolute;left:0;right:0;height:2px;background:var(--muted)}
-.hamburger::before{top:-6px} .hamburger::after{bottom:-6px}
+  <!-- PAGE CONTENT -->
+  <main id="main" tabindex="-1">
+    <!-- HERO -->
+    <section id="home" class="section hero" aria-label="Home">
+      <div class="container hero-grid">
+        <div class="hero-content">
+          <h1 class="hero-title">CyberSecure Solutions</h1>
+          <p class="hero-sub">We are a multidisciplinary cybersecurity team — ethical hackers, cloud defenders, and incident responders — helping businesses reduce risk and recover faster.</p>
+          <div class="hero-actions">
+            <a class="btn btn-primary" href="#contact">Get a Quote</a>
+            <a class="btn btn-outline" href="#portfolio">See Work</a>
+          </div>
+          <div class="trusted">
+            <span class="trusted-label">Trusted by</span>
+            <div class="trusted-list">
+              <span class="chip">Startup</span>
+              <span class="chip">SaaS</span>
+              <span class="chip">Healthcare</span>
+            </div>
+          </div>
+        </div>
 
-/* HERO */
-.hero { padding-top:110px; padding-bottom:40px }
-.hero-grid{display:grid;grid-template-columns:1fr 320px;gap:28px;align-items:start}
-@media(max-width:920px){ .hero-grid{grid-template-columns:1fr} }
+        <aside class="hero-card" aria-hidden="false">
+          <div class="stat">
+            <div class="stat-value">100+</div>
+            <div class="stat-label">Engagements</div>
+          </div>
+          <div class="stat">
+            <div class="stat-value">90%</div>
+            <div class="stat-label">Fix Acceptance</div>
+          </div>
+          <div class="stat small-note">Redacted reports available — NDA on request</div>
+        </aside>
+      </div>
+    </section>
 
-.hero-title{font-family: 'Orbitron', sans-serif;font-size:clamp(28px,4vw,44px);color:var(--accent1);text-shadow:0 8px 30px rgba(0,247,255,0.06)}
-.hero-sub{color:var(--muted);margin-top:12px;max-width:70ch}
-.hero-actions{margin-top:18px;display:flex;gap:12px;flex-wrap:wrap}
-.btn{display:inline-block;padding:10px 14px;border-radius:10px;font-weight:700;text-decoration:none;border:1px solid rgba(255,255,255,0.03)}
-.btn-primary{background:linear-gradient(90deg,var(--accent1),var(--accent2));color:#041022;box-shadow:0 12px 30px rgba(0,247,255,0.08)}
-.btn-outline{background:transparent;color:var(--accent1);border:1px solid rgba(0,247,255,0.12)}
+    <!-- ABOUT -->
+    <section id="about" class="section" aria-label="About">
+      <div class="container">
+        <div class="split">
+          <div class="card about-card">
+            <h2 class="section-title">About Us</h2>
+            <p>We combine offensive testing, cloud expertise and incident response to deliver prioritized, actionable fixes. Our team follows OWASP, MITRE ATT&CK and cloud best practices to help clients reduce attack surface and improve resilience.</p>
 
-/* hero small right card */
-.hero-card{background:linear-gradient(180deg, rgba(255,255,255,0.01), rgba(255,255,255,0.005)); padding:18px;border-radius:12px;border:1px solid rgba(255,255,255,0.03)}
-.stat{display:flex;align-items:center;gap:14px;margin-bottom:12px}
-.stat-value{font-family: 'Orbitron', sans-serif;font-size:20px;color:var(--accent1);font-weight:700}
-.stat-label{color:var(--muted)}
+            <ul class="highlights">
+              <li>Practical, prioritized remediation</li>
+              <li>Professional, redacted reporting</li>
+              <li>Post-fix verification & retests</li>
+            </ul>
+          </div>
 
-/* SPLIT (about) */
-.split{display:grid;grid-template-columns:1fr 360px;gap:20px}
-@media(max-width:920px){ .split{grid-template-columns:1fr} }
+          <div class="card aside-card">
+            <h3>Core Capabilities</h3>
+            <ul class="capabilities">
+              <li>Web & API Pentesting</li>
+              <li>Cloud Security Reviews (AWS/Azure/GCP)</li>
+              <li>Malware Analysis & Cleanup</li>
+              <li>SOC & Monitoring / SIEM tuning</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
 
-.card{background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));padding:20px;border-radius:var(--radius);border:1px solid rgba(255,255,255,0.03);box-shadow:0 12px 36px rgba(2,8,23,0.6)}
-.about-card p{color:#cfe6ff}
-.highlights{margin-top:12px;color:var(--muted);list-style:disc;padding-left:18px}
+    <!-- SERVICES -->
+    <section id="services" class="section" aria-label="Services">
+      <div class="container">
+        <h2 class="section-title center">Our Services</h2>
 
-/* CAPABILITIES list */
-.aside-card h3{color:var(--accent2);margin:0 0 8px}
-.capabilities{list-style:none;color:#dceffd;padding-left:0}
-.capabilities li{margin:8px 0}
+        <!-- responsive grid: 1 column mobile, 2 tablet, 3 desktop -->
+        <div class="service-grid" role="list">
+          <article class="service-card" role="listitem">
+            <div class="icon-wrap"><i class="fas fa-user-secret" aria-hidden="true"></i></div>
+            <h3>Penetration Testing</h3>
+            <p>Web, API and infrastructure pentests with prioritized remediations and verification retests.</p>
+          </article>
 
-/* SERVICES grid */
-.section-title{font-family: 'Orbitron', sans-serif;font-size:22px;margin-bottom:8px;color:var(--accent1)}
-.service-grid{display:grid;grid-template-columns:repeat(1,1fr);gap:18px;margin-top:16px}
-@media(min-width:640px){ .service-grid{grid-template-columns:repeat(2,1fr)} }
-@media(min-width:980px){ .service-grid{grid-template-columns:repeat(3,1fr)} }
+          <article class="service-card" role="listitem">
+            <div class="icon-wrap"><i class="fas fa-cloud" aria-hidden="true"></i></div>
+            <h3>Cloud Security</h3>
+            <p>Cloud configuration audits, IAM reviews and secure baseline automation for AWS/Azure/GCP.</p>
+          </article>
 
-.service-card{display:flex;flex-direction:column;align-items:center;text-align:center;padding:22px;gap:12px;min-height:200px}
-.icon-wrap{width:72px;height:72px;border-radius:18px;display:flex;align-items:center;justify-content:center;background:linear-gradient(90deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));border:1px solid rgba(255,255,255,0.04);box-shadow:0 8px 30px rgba(0,0,0,0.6)}
-.icon-wrap i{font-size:28px;color:var(--accent1)}
+          <article class="service-card" role="listitem">
+            <div class="icon-wrap"><i class="fas fa-bug" aria-hidden="true"></i></div>
+            <h3>Malware Analysis</h3>
+            <p>Detect, remove, and analyze malware with forensic findings and cleanup guidance.</p>
+          </article>
 
-/* PORTFOLIO */
-.portfolio-grid{display:grid;grid-template-columns:1fr;gap:18px;margin-top:18px}
-@media(min-width:780px){ .portfolio-grid{grid-template-columns:repeat(2,1fr)} }
-@media(min-width:1100px){ .portfolio-grid{grid-template-columns:repeat(3,1fr)} }
+          <article class="service-card" role="listitem">
+            <div class="icon-wrap"><i class="fas fa-network-wired" aria-hidden="true"></i></div>
+            <h3>Network Hardening</h3>
+            <p>Firewall & segmentation reviews, IDS tuning, and network architecture guidance.</p>
+          </article>
 
-.portfolio-item{border-radius:12px;overflow:hidden;border:1px solid rgba(255,255,255,0.03);background:var(--card);display:flex;flex-direction:column;transition:transform .28s,box-shadow .28s}
-.portfolio-item:hover{transform:translateY(-8px);box-shadow:0 36px 100px rgba(2,8,23,0.6)}
-.portfolio-thumb{width:100%;height:170px;object-fit:cover}
-.portfolio-meta{padding:14px;display:flex;flex-direction:column;gap:10px}
-.portfolio-cta{align-self:flex-start;padding:8px 12px;border-radius:9px;text-decoration:none;font-weight:700;background:linear-gradient(90deg,var(--accent1),var(--accent2));color:#031025}
+          <article class="service-card" role="listitem">
+            <div class="icon-wrap"><i class="fas fa-search" aria-hidden="true"></i></div>
+            <h3>SOC & Monitoring</h3>
+            <p>Log analysis, SIEM tuning and alerting to detect real incidents quickly.</p>
+          </article>
 
-/* tags */
-.tags{display:flex;gap:8px;flex-wrap:wrap;margin-top:6px}
-.tag{font-size:12px;padding:6px 8px;border-radius:999px;background:rgba(255,255,255,0.02);color:var(--muted)}
+          <article class="service-card" role="listitem">
+            <div class="icon-wrap"><i class="fas fa-chalkboard-teacher" aria-hidden="true"></i></div>
+            <h3>Security Training</h3>
+            <p>Phishing simulations and developer/staff training to raise security awareness.</p>
+          </article>
+        </div>
+      </div>
+    </section>
 
-/* CONTACT grid */
-.contact-grid{display:grid;grid-template-columns:1fr 460px;gap:20px}
-@media(max-width:980px){ .contact-grid{grid-template-columns:1fr} }
+    <!-- PORTFOLIO -->
+    <section id="portfolio" class="section" aria-label="Portfolio">
+      <div class="container">
+        <h2 class="section-title center">Selected Work</h2>
+        <p class="muted center">Redacted case studies and summaries demonstrating impact — full reports shared under NDA.</p>
 
-.contact-form .field{display:flex;flex-direction:column;margin-bottom:12px}
-.contact-form input,.contact-form textarea{padding:10px;border-radius:8px;border:1px solid rgba(255,255,255,0.04);background:transparent;color:var(--muted)}
-.contact-form label span{display:block;margin-bottom:6px;color:var(--muted);font-size:0.95rem}
+        <div class="portfolio-grid">
+          <!-- item -->
+          <article class="portfolio-item">
+            <img src="assets/portfolio1.jpg" alt="E-commerce pentest (redacted) screenshot" class="portfolio-thumb">
+            <div class="portfolio-meta">
+              <h4>Simulated E-commerce Pentest (redacted)</h4>
+              <p>Identified SQL injection and session issues; prioritized fixes and verified remediations.</p>
+              <div class="tags"><span class="tag">SQLi</span><span class="tag">OWASP</span></div>
+              <a class="btn btn-ghost portfolio-cta" href="downloads/ecom-redacted.pdf" target="_blank" rel="noopener">View Case</a>
+            </div>
+          </article>
 
-/* FOOTER */
-.site-footer{padding:28px;text-align:center;color:var(--muted);border-top:1px solid rgba(255,255,255,0.02);margin-top:10px}
+          <article class="portfolio-item">
+            <img src="assets/portfolio2.jpg" alt="WordPress cleanup screenshot" class="portfolio-thumb">
+            <div class="portfolio-meta">
+              <h4>WordPress Malware Cleanup</h4>
+              <p>Removed obfuscated backdoors and hardened configuration; added monitoring & WAF tuning.</p>
+              <div class="tags"><span class="tag">WordPress</span><span class="tag">Malware</span></div>
+              <a class="btn btn-ghost portfolio-cta" href="downloads/wp-cleanup-redacted.pdf" target="_blank" rel="noopener">View Case</a>
+            </div>
+          </article>
 
-/* small screens - nav & spacing */
-@media(max-width:880px){
-  .nav ul{display:none}
-  .nav.open ul{display:flex;flex-direction:column;position:absolute;right:16px;top:64px;background:linear-gradient(180deg, rgba(2,6,15,0.9), rgba(2,6,15,0.8));padding:12px;border-radius:10px}
-  .nav-toggle{display:block}
-  .hero-title{font-size:28px}
-  .portfolio-thumb{height:140px}
-  .service-card{min-height:160px}
-  .container{padding:0 14px}
-  .section{padding:36px 0}
-}
+          <article class="portfolio-item">
+            <img src="assets/portfolio3.jpg" alt="Cloud permissions review screenshot" class="portfolio-thumb">
+            <div class="portfolio-meta">
+              <h4>Cloud Misconfiguration Review</h4>
+              <p>Audited IAM & S3 permissions, produced prioritized remediation and automation scripts.</p>
+              <div class="tags"><span class="tag">Cloud</span><span class="tag">IAM</span></div>
+              <a class="btn btn-ghost portfolio-cta" href="downloads/cloud-review-redacted.pdf" target="_blank" rel="noopener">View Case</a>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
 
-/* Accessibility focus */
-a:focus,button:focus,input:focus,textarea:focus{outline:3px solid rgba(0,247,255,0.12);outline-offset:3px}
+    <!-- CONTACT -->
+    <section id="contact" class="section" aria-label="Contact">
+      <div class="container">
+        <div class="contact-grid">
+          <div class="card contact-card">
+            <h2 class="section-title">Contact</h2>
+            <p class="muted">Let's discuss a scope and plan that fits your risk profile.</p>
+            <p>Email: <a href="mailto:alira6018@gmail.com">alira6018@gmail.com</a></p>
+            <p>GitHub: <a href="https://github.com/Alirazawaris" target="_blank" rel="noopener">Alirazawaris</a></p>
+            <p>LinkedIn: <a href="#" target="_blank" rel="noopener">Coming soon</a></p>
+            <p class="small-note">All case studies are redacted. Testing is only performed with written authorization.</p>
+          </div>
+
+          <form class="card contact-form" action="https://formspree.io/f/YOUR_FORMSPREE_URL" method="POST">
+            <label class="field">
+              <span>Name</span>
+              <input name="name" required>
+            </label>
+            <label class="field">
+              <span>Email</span>
+              <input name="_replyto" type="email" required>
+            </label>
+            <label class="field">
+              <span>Message</span>
+              <textarea name="message" rows="5" required></textarea>
+            </label>
+            <div style="display:flex;gap:12px;align-items:center;margin-top:10px">
+              <button class="btn btn-primary" type="submit">Send Message</button>
+              <small class="muted">Or email directly</small>
+            </div>
+          </form>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <small>© <span id="year"></span> CyberSecure Solutions — All Rights Reserved</small>
+  </footer>
+
+  <!-- SCRIPTS: nav toggle, smooth scroll w/ offset, active link -->
+  <script>
+    // fill year
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    // responsive nav toggle for small screens
+    const navToggle = document.getElementById('nav-toggle');
+    const nav = document.querySelector('.nav');
+    navToggle.addEventListener('click', () => {
+      const expanded = navToggle.getAttribute('aria-expanded') === 'true';
+      navToggle.setAttribute('aria-expanded', !expanded);
+      nav.classList.toggle('open');
+    });
+
+    // smooth scroll with header offset
+    (function () {
+      const header = document.querySelector('.navbar');
+      const headerHeight = header.offsetHeight;
+      const links = document.querySelectorAll('a[href^="#"]');
+
+      links.forEach(link => {
+        link.addEventListener('click', (e) => {
+          const targetId = link.getAttribute('href');
+          if (!targetId.startsWith('#') || targetId === '#') return;
+          const target = document.querySelector(targetId);
+          if (!target) return;
+          e.preventDefault();
+          const top = target.getBoundingClientRect().top + window.scrollY - headerHeight - 8;
+          window.scrollTo({ top, behavior: 'smooth' });
+          // close nav on mobile
+          if (nav.classList.contains('open')) nav.classList.remove('open');
+          if (navToggle) navToggle.setAttribute('aria-expanded', 'false');
+        });
+      });
+
+      // active-link on scroll
+      const sections = document.querySelectorAll('section[id]');
+      function onScroll() {
+        const scrollPos = window.scrollY + headerHeight + 20;
+        sections.forEach(sec => {
+          const top = sec.offsetTop;
+          const bottom = top + sec.offsetHeight;
+          const id = sec.getAttribute('id');
+          const link = document.querySelector('.nav a[href="#' + id + '"]');
+          if (!link) return;
+          if (scrollPos >= top && scrollPos <= bottom) {
+            link.classList.add('active');
+          } else {
+            link.classList.remove('active');
+          }
+        });
+      }
+      window.addEventListener('scroll', onScroll, { passive: true });
+      onScroll();
+    })();
+  </script>
+</body>
+</html>
