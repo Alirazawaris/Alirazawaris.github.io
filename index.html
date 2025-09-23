@@ -3,117 +3,134 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>YOUR NAME — Cybersecurity Portfolio</title>
-  <meta name="description" content="YOUR NAME — Cybersecurity specialist: pentests, vulnerability assessments, malware removal. Redacted reports available." />
-
-  <!-- Open Graph preview (replace og-image.png if you upload one) -->
-  <meta property="og:title" content="YOUR NAME — Cybersecurity Specialist">
+  <title>Ali Raza — Cybersecurity Portfolio</title>
+  <meta name="description" content="Ali Raza — Cybersecurity specialist: pentests, vulnerability assessments, malware removal. Redacted reports available." />
+  <meta property="og:title" content="Ali Raza — Cybersecurity Specialist">
   <meta property="og:description" content="Web & API pentests, cloud audits, malware removal — redacted reports on request.">
-  <meta property="og:image" content="https://your-github-username.github.io/og-image.png">
+  <meta property="og:image" content="https://Alirazawaris.github.io/og-image.png">
   <meta name="twitter:card" content="summary_large_image">
-
-  <!-- JSON-LD (update URLs) -->
-  <script type="application/ld+json">
-  {
-    "@context":"https://schema.org",
-    "@type":"Person",
-    "name":"YOUR NAME",
-    "url":"https://your-github-username.github.io",
-    "sameAs":["https://linkedin.com/in/your-linkedin","https://github.com/your-github-username"],
-    "jobTitle":"Cybersecurity Specialist"
-  }
-  </script>
 
   <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
-  <div class="page-wrap">
-    <header class="hero" aria-label="Intro">
-      <div class="hero-inner">
-        <div class="logo-blob" aria-hidden="true"></div>
+  <div class="scene">
+    <!-- Animated background orbs -->
+    <div class="orb orb-a"></div>
+    <div class="orb orb-b"></div>
+    <div class="orb orb-c"></div>
 
-        <div class="intro-card" role="banner">
-          <h1 class="name">YOUR NAME</h1>
-          <p class="tagline">SHORT ONE-LINER — Cybersecurity • Penetration Testing • Malware Removal</p>
-          <div class="cta-row">
-            <a class="btn primary" href="#contact">Contact</a>
-            <a class="btn ghost" href="#projects">Projects</a>
+    <header class="hero" role="banner">
+      <div class="hero-inner">
+        <div class="card-3d hero-card">
+          <div class="card-layer bg-layer"></div>
+          <div class="card-layer mid-layer"></div>
+          <div class="card-layer top-layer">
+            <h1 class="title">Ali Raza</h1>
+            <p class="subtitle">Securing digital assets with ethical hacking, penetration testing, and incident response</p>
+            <div class="actions">
+              <a class="btn btn-primary" href="#contact">Contact</a>
+              <a class="btn btn-outline" href="#projects">Projects</a>
+            </div>
           </div>
         </div>
 
-        <div class="badge-card" aria-hidden="true">
-          <div class="badge">Trusted</div>
-          <div class="small">Redacted samples on request</div>
+        <div class="card-3d badge-card">
+          <div class="card-layer badge-bg"></div>
+          <div class="card-layer badge-top">
+            <div class="badge-large">NEON TRUST</div>
+            <div class="badge-sub">Redacted samples on request</div>
+          </div>
         </div>
       </div>
     </header>
 
-    <main class="container" id="main">
-      <section id="about" class="card 3d-card">
-        <h2>About</h2>
-        <p>I help startups and SMEs secure applications and infrastructure: web & API penetration testing (OWASP Top 10), cloud security reviews (AWS/Azure/GCP), malware cleanup, and incident response. I deliver redacted reports and remediation roadmaps.</p>
-        <ul class="skills">
-          <li>Web & API Pentesting</li>
-          <li>Cloud Security Reviews</li>
-          <li>Malware Detection & Removal</li>
-          <li>Incident Response & Forensics</li>
-        </ul>
+    <main class="main" id="main">
+      <section id="about" class="card-3d content-card">
+        <div class="card-layer bg-layer"></div>
+        <div class="card-layer top-layer">
+          <h2>About</h2>
+          <p>I help startups and SMEs secure apps and infrastructure: web & API penetration testing (OWASP Top 10), cloud security reviews (AWS/Azure/GCP), malware cleanup, and incident response. I deliver redacted reports, remediation roadmaps, and verified retests.</p>
+
+          <ul class="skill-chips">
+            <li>Web & API Pentesting</li>
+            <li>Cloud Security Reviews</li>
+            <li>Malware Detection & Cleanup</li>
+            <li>Incident Response & Forensics</li>
+          </ul>
+        </div>
       </section>
 
-      <section id="projects" class="grid">
-        <h2>Selected Projects</h2>
+      <section id="projects" class="projects-grid">
+        <h2 class="section-heading">Selected Projects</h2>
 
-        <article class="project-card 3d-card">
-          <h3>Simulated E-commerce Pentest (redacted)</h3>
-          <p>Scope: OWASP Top 10 focused review. Findings: SQL Injection (redacted), stored XSS. Deliverable: Redacted report + remediation checklist.</p>
+        <article class="card-3d project-card">
+          <div class="card-layer bg-layer"></div>
+          <div class="card-layer top-layer">
+            <h3>Simulated E-commerce Pentest (redacted)</h3>
+            <p>OWASP Top 10-focused audit. Found high-priority SQLi (redacted) and stored XSS. Deliverable: redacted report + remediation checklist + verification.</p>
+          </div>
         </article>
 
-        <article class="project-card 3d-card">
-          <h3>WordPress Malware Cleanup</h3>
-          <p>Cleaned obfuscated backdoors, hardened WP configuration, and added monitoring + WAF rules. Verified reinfection checks included.</p>
+        <article class="card-3d project-card">
+          <div class="card-layer bg-layer"></div>
+          <div class="card-layer top-layer">
+            <h3>WordPress Malware Cleanup</h3>
+            <p>Removed obfuscated backdoors, hardened WP config, added monitoring and WAF rules. Performed reinfection checks and follow-up monitoring steps.</p>
+          </div>
         </article>
 
-        <article class="project-card 3d-card">
-          <h3>Cloud Misconfiguration Review</h3>
-          <p>Reviewed IAM, S3 permissions, and public services. Provided prioritized fixes and secure baseline scripts.</p>
+        <article class="card-3d project-card">
+          <div class="card-layer bg-layer"></div>
+          <div class="card-layer top-layer">
+            <h3>Cloud Misconfiguration Review</h3>
+            <p>IAM & S3 permissions audit. Prioritized fixes and secure baseline automation scripts provided.</p>
+          </div>
         </article>
       </section>
 
-      <section id="services" class="card 3d-card">
-        <h2>Services</h2>
-        <ul>
-          <li>Vulnerability Assessment & Pentesting</li>
-          <li>Redacted Reporting & Remediation Roadmaps</li>
-          <li>Cloud Security Audits</li>
-          <li>Malware Analysis & Cleanup</li>
-          <li>Incident Response Playbooks</li>
-        </ul>
+      <section id="services" class="card-3d content-card">
+        <div class="card-layer bg-layer"></div>
+        <div class="card-layer top-layer">
+          <h2>Services</h2>
+          <ul class="services-list">
+            <li>Vulnerability Assessment & Pentesting</li>
+            <li>Redacted Reporting & Remediation Roadmaps</li>
+            <li>Cloud Security Audits</li>
+            <li>Malware Analysis & Cleanup</li>
+            <li>Incident Response Playbooks</li>
+          </ul>
+        </div>
       </section>
 
-      <section id="contact" class="card contact-card 3d-card" aria-labelledby="contact-heading">
-        <h2 id="contact-heading">Contact</h2>
-        <p>Email: <a href="mailto:your.email@example.com">your.email@example.com</a></p>
-        <p>GitHub: <a href="https://github.com/your-github-username" target="_blank" rel="noopener">github.com/your-github-username</a> · LinkedIn: <a href="https://linkedin.com/in/your-linkedin" target="_blank" rel="noopener">your-linkedin</a></p>
+      <section id="contact" class="card-3d contact-card">
+        <div class="card-layer bg-layer"></div>
+        <div class="card-layer top-layer">
+          <h2>Contact</h2>
+          <p>Email: <a href="mailto:alira6018@gmail.com">alira6018@gmail.com</a></p>
+          <p>GitHub: <a href="https://github.com/Alirazawaris" target="_blank" rel="noopener">github.com/Alirazawaris</a> · LinkedIn: <a href="#" target="_blank" rel="noopener">Coming soon</a></p>
 
-        <p class="ethics"><small>All tests and samples are redacted. I only perform security testing with written authorization.</small></p>
+          <p class="ethics"><small>All tests and samples are redacted. I only perform security testing with written authorization.</small></p>
 
-        <!-- Optional: Formspree contact form (uncomment and replace YOUR_FORMSPREE_URL)
-        <form method="POST" action="https://formspree.io/f/YOUR_FORMSPREE_URL">
-          <label>Name <input name="name" required></label>
-          <label>Email <input type="email" name="_replyto" required></label>
-          <label>Message <textarea name="message" required></textarea></label>
-          <input type="text" name="_subject" value="Portfolio enquiry" hidden>
-          <button type="submit" class="btn primary">Send</button>
-        </form>
-        -->
+          <!-- Optional Formspree (uncomment & replace) -->
+          <!--
+          <form method="POST" action="https://formspree.io/f/YOUR_FORMSPREE_URL" class="contact-form">
+            <label><input name="name" placeholder="Your name" required></label>
+            <label><input type="email" name="_replyto" placeholder="Your email" required></label>
+            <label><textarea name="message" placeholder="Message" required></textarea></label>
+            <button class="btn btn-primary" type="submit">Send</button>
+          </form>
+          -->
+        </div>
       </section>
     </main>
 
-    <footer class="site-footer">
-      <small>© <span id="year"></span> YOUR NAME — Redacted samples available on request.</small>
+    <footer class="footer">
+      <small>© <span id="year"></span> Ali Raza — Redacted samples available on request.</small>
     </footer>
   </div>
 
-  <script>document.getElementById('year').textContent = new Date().getFullYear();</script>
+  <script>
+    document.getElementById('year').textContent = new Date().getFullYear();
+  </script>
 </body>
 </html>
