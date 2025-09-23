@@ -6,41 +6,18 @@
   <title>CyberSecure Solutions — Company Portfolio</title>
   <meta name="description" content="CyberSecure Solutions — Team of ethical hackers providing pentests, cloud audits, malware removal and incident response." />
 
-  <!-- Font Awesome (reliable CDN) -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-
-  qVU6Y3bKqNqj0eEb5t0Qz1m9f0m9w1k+V6c5Vbn3Hd8xgSg6v8e8vN1a2Q6wK7y6pG3k9b3qJ2w8s5s5a6u4w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <!-- Font Awesome (CDN) -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer" />
 
-  <!-- link to your main CSS (keeps the VIP look you already have) -->
-  <link rel="stylesheet" href="styles.css">
-
-  <!-- tiny critical tweaks to make transitions & icon layout more obvious immediately -->
-  <style>
-    /* clearer visible transitions & icon sizing */
-    .service-card { transition: transform .36s cubic-bezier(.2,.9,.2,1), box-shadow .36s, opacity .36s; opacity: 1; }
-    .service-card:hover { transform: translateY(-12px) scale(1.035); box-shadow: 0 34px 90px rgba(2,8,23,0.72); }
-    .icon-wrap { width:84px; height:84px; border-radius:16px; display:flex; align-items:center; justify-content:center; margin-bottom:10px; transition: transform .24s, box-shadow .24s; }
-    .icon-wrap i { font-size:28px; color:var(--accent1); }
-    .service-card:hover .icon-wrap { transform: translateY(-6px) scale(1.06); box-shadow: 0 18px 40px rgba(0,247,255,0.08); }
-
-    /* portfolio hover stronger */
-    .portfolio-item:hover { transform: translateY(-10px); box-shadow: 0 42px 110px rgba(2,8,23,0.72); }
-    .portfolio-cta { transition: transform .22s, box-shadow .22s; }
-    .portfolio-cta:hover { transform:translateY(-4px); box-shadow: 0 14px 38px rgba(0,247,255,0.12); }
-
-    /* responsive icon layout safety */
-    .service-grid { align-items:stretch; }
-    .service-card { display:flex; flex-direction:column; align-items:center; text-align:center; }
-
-    /* make nav active links obvious */
-    .nav a.active { background: linear-gradient(90deg, var(--accent1), var(--accent2)); color:#031025; box-shadow:0 12px 30px rgba(0,247,255,0.06); }
-  </style>
+  <!-- main stylesheet -->
+  <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
-  <!-- NAVBAR -->
+  <!-- NAV -->
   <header class="navbar" role="banner">
     <div class="brand">CyberSecure Solutions</div>
 
-    <nav aria-label="Main navigation" class="nav">
+    <nav class="nav" aria-label="Main">
       <ul>
         <li><a href="#home" class="nav-link">Home</a></li>
         <li><a href="#about" class="nav-link">About</a></li>
@@ -50,14 +27,14 @@
       </ul>
     </nav>
 
-    <button id="nav-toggle" aria-label="Open menu" class="nav-toggle" aria-expanded="false">
+    <button id="nav-toggle" class="nav-toggle" aria-label="Open menu" aria-expanded="false">
       <span class="hamburger"></span>
     </button>
   </header>
 
   <main id="main" tabindex="-1">
     <!-- HERO -->
-    <section id="home" class="section hero">
+    <section id="home" class="section hero anim">
       <div class="container hero-grid">
         <div class="hero-content">
           <h1 class="hero-title">CyberSecure Solutions</h1>
@@ -83,7 +60,7 @@
     </section>
 
     <!-- ABOUT -->
-    <section id="about" class="section">
+    <section id="about" class="section anim">
       <div class="container">
         <div class="split">
           <div class="card about-card">
@@ -111,42 +88,43 @@
     </section>
 
     <!-- SERVICES -->
-    <section id="services" class="section">
+    <section id="services" class="section anim">
       <div class="container">
         <h2 class="section-title center">Our Services</h2>
 
         <div class="service-grid" role="list">
-          <article class="service-card card" role="listitem">
+          <!-- cards get anim-item class for stagger -->
+          <article class="service-card card anim-item" role="listitem">
             <div class="icon-wrap"><i class="fa-solid fa-user-secret" aria-hidden="true"></i></div>
             <h3>Penetration Testing</h3>
             <p>Web, API and infrastructure pentests with prioritized remediations and verification retests.</p>
           </article>
 
-          <article class="service-card card" role="listitem">
+          <article class="service-card card anim-item" role="listitem">
             <div class="icon-wrap"><i class="fa-solid fa-cloud" aria-hidden="true"></i></div>
             <h3>Cloud Security</h3>
             <p>Cloud configuration audits, IAM reviews and secure baseline automation for AWS/Azure/GCP.</p>
           </article>
 
-          <article class="service-card card" role="listitem">
+          <article class="service-card card anim-item" role="listitem">
             <div class="icon-wrap"><i class="fa-solid fa-bug" aria-hidden="true"></i></div>
             <h3>Malware Analysis</h3>
             <p>Detect, remove, and analyze malware with forensic findings and cleanup guidance.</p>
           </article>
 
-          <article class="service-card card" role="listitem">
+          <article class="service-card card anim-item" role="listitem">
             <div class="icon-wrap"><i class="fa-solid fa-network-wired" aria-hidden="true"></i></div>
             <h3>Network Hardening</h3>
             <p>Firewall & segmentation reviews, IDS tuning, and network architecture guidance.</p>
           </article>
 
-          <article class="service-card card" role="listitem">
+          <article class="service-card card anim-item" role="listitem">
             <div class="icon-wrap"><i class="fa-solid fa-magnifying-glass" aria-hidden="true"></i></div>
             <h3>SOC & Monitoring</h3>
             <p>Log analysis, SIEM tuning and alerting to detect real incidents quickly.</p>
           </article>
 
-          <article class="service-card card" role="listitem">
+          <article class="service-card card anim-item" role="listitem">
             <div class="icon-wrap"><i class="fa-solid fa-chalkboard-user" aria-hidden="true"></i></div>
             <h3>Security Training</h3>
             <p>Phishing simulations and developer/staff training to raise security awareness.</p>
@@ -156,23 +134,23 @@
     </section>
 
     <!-- PORTFOLIO -->
-    <section id="portfolio" class="section">
+    <section id="portfolio" class="section anim">
       <div class="container">
         <h2 class="section-title center">Selected Work</h2>
         <p class="muted center">Redacted case studies and summaries demonstrating impact — full reports shared under NDA.</p>
 
         <div class="portfolio-grid">
-          <article class="portfolio-item">
+          <article class="portfolio-item anim-item">
             <img src="assets/portfolio1.jpg" alt="E-commerce pentest thumbnail" class="portfolio-thumb">
             <div class="portfolio-meta">
               <h4>Simulated E-commerce Pentest (redacted)</h4>
               <p>Identified SQL injection and session issues; prioritized fixes and verified remediations.</p>
               <div class="tags"><span class="tag">SQLi</span><span class="tag">OWASP</span></div>
-              <a class="btn portfolio-cta portfolio-cta" href="downloads/ecom-redacted.pdf" target="_blank" rel="noopener">View Case</a>
+              <a class="btn portfolio-cta" href="downloads/ecom-redacted.pdf" target="_blank" rel="noopener">View Case</a>
             </div>
           </article>
 
-          <article class="portfolio-item">
+          <article class="portfolio-item anim-item">
             <img src="assets/portfolio2.jpg" alt="WordPress cleanup thumbnail" class="portfolio-thumb">
             <div class="portfolio-meta">
               <h4>WordPress Malware Cleanup</h4>
@@ -182,7 +160,7 @@
             </div>
           </article>
 
-          <article class="portfolio-item">
+          <article class="portfolio-item anim-item">
             <img src="assets/portfolio3.jpg" alt="Cloud review thumbnail" class="portfolio-thumb">
             <div class="portfolio-meta">
               <h4>Cloud Misconfiguration Review</h4>
@@ -196,7 +174,7 @@
     </section>
 
     <!-- CONTACT -->
-    <section id="contact" class="section">
+    <section id="contact" class="section anim">
       <div class="container">
         <div class="contact-grid">
           <div class="card contact-card">
@@ -207,15 +185,11 @@
             <p class="small-note">All case studies are redacted. Testing is only performed with written authorization.</p>
           </div>
 
-          <!-- FORM: replace the action with your Formspree endpoint (instructions below) -->
-          <form class="card contact-form" action="https://formspree.io/f/YOUR_FORMSPREE_ID" method="POST">
+          <form id="contact-form" class="card contact-form" action="https://formspree.io/f/YOUR_ID" method="POST">
             <label class="field"><span>Name</span><input name="name" required></label>
             <label class="field"><span>Email</span><input name="_replyto" type="email" required></label>
             <label class="field"><span>Message</span><textarea name="message" rows="5" required></textarea></label>
-
-            <!-- optional: honeypot anti-spam -->
             <input type="text" name="_gotcha" style="display:none">
-
             <div style="display:flex;gap:12px;align-items:center;margin-top:10px">
               <button class="btn btn-primary" type="submit">Send Message</button>
               <small class="muted">Or email directly</small>
@@ -231,11 +205,12 @@
     <small>© <span id="year"></span> CyberSecure Solutions — All Rights Reserved</small>
   </footer>
 
+  <!-- SCRIPTS -->
   <script>
     // fill year
     document.getElementById('year').textContent = new Date().getFullYear();
 
-    // Nav toggle for mobile
+    // mobile nav toggle
     const navToggle = document.getElementById('nav-toggle');
     const nav = document.querySelector('.nav');
     if (navToggle) {
@@ -246,7 +221,7 @@
       });
     }
 
-    // Smooth scroll w/ header offset & active link highlight
+    // smooth scroll + active link
     (function () {
       const header = document.querySelector('.navbar');
       const headerHeight = header.offsetHeight;
@@ -283,17 +258,43 @@
       onScroll();
     })();
 
-    // Optional: Form status UI (works with Formspree auto redirect or ajax)
+    // IntersectionObserver for animations + stagger
     (function () {
-      const form = document.querySelector('.contact-form');
+      const rootMargin = '0px 0px -8% 0px';
+      const animObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('in-view');
+            // if element has children with .anim-item, stagger them
+            const items = entry.target.querySelectorAll('.anim-item');
+            if (items.length) {
+              items.forEach((it, i) => {
+                it.style.transitionDelay = (i * 80) + 'ms';
+                it.classList.add('in-view');
+              });
+            }
+            animObserver.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.15, rootMargin });
+
+      // observe top-level animate-able sections
+      document.querySelectorAll('.anim').forEach(el => animObserver.observe(el));
+      // also observe isolated items (if not inside anim sections)
+      document.querySelectorAll('.anim-item').forEach(el => {
+        if (!el.classList.contains('in-view')) animObserver.observe(el);
+      });
+    })();
+
+    // contact form AJAX -> Formspree (keeps user on page)
+    (function () {
+      const form = document.getElementById('contact-form');
       const status = document.getElementById('form-status');
       if (!form) return;
-
-      // Try to submit via fetch to stay on page (Formspree supports CORS)
       form.addEventListener('submit', async (e) => {
         e.preventDefault();
-        const action = form.getAttribute('action');
-        if (!action || action.includes('YOUR_FORMSPREE_ID')) {
+        const action = form.action;
+        if (!action || action.includes('YOUR_ID')) {
           status.textContent = 'Form not configured — replace action with your Formspree endpoint.';
           return;
         }
