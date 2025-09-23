@@ -1,96 +1,434 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>CyberShield Security</title>
-  <link rel="stylesheet" href="style.css" />
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700&family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>CyberShield — Cybersecurity Agency</title>
+
+<!-- Fonts & Icons -->
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&family=Orbitron:wght@500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" integrity="sha512-KyZXEAg3QhqLMpG8r+Knujsl5+5hb7x6s1q9Zl50l+Q3G1Z1G/KnQy6D8s2t5n6q5l1p4qVgX1s5q1K8f5b2w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+<style>
+/* ------------------------------
+   CyberShield Single-file CSS
+   Paste this whole file as index.html
+   ------------------------------ */
+
+/* Variables */
+:root{
+  --bg-1: #040612;
+  --bg-2: #08112a;
+  --panel: rgba(255,255,255,0.03);
+  --glass: rgba(255,255,255,0.02);
+  --accent1: #00f7ff;
+  --accent2: #ff00d0;
+  --muted: #9fb7d3;
+  --card-radius: 14px;
+  --max-width: 1100px;
+  --ease: cubic-bezier(.2,.9,.25,1);
+  --anim-ms: 700ms;
+}
+
+/* Reset */
+*{box-sizing:border-box}
+html,body{height:100%}
+body{
+  margin:0;
+  font-family:Inter, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+  background: radial-gradient(900px 500px at 8% 8%, rgba(0,120,255,0.04), transparent 6%),
+              radial-gradient(700px 400px at 92% 88%, rgba(255,0,200,0.03), transparent 6%),
+              linear-gradient(180deg,var(--bg-1),var(--bg-2));
+  color:#e6f3ff;
+  -webkit-font-smoothing:antialiased;
+  -moz-osx-font-smoothing:grayscale;
+  line-height:1.5;
+}
+
+/* Utility */
+.container{max-width:var(--max-width);margin:0 auto;padding:0 18px}
+.center{text-align:center}
+.muted{color:var(--muted)}
+
+/* NAV */
+.header{
+  position:fixed;left:0;right:0;top:0;z-index:1200;
+  background:linear-gradient(180deg, rgba(2,6,15,0.75), rgba(2,6,15,0.45));
+  border-bottom:1px solid rgba(255,255,255,0.02);
+  backdrop-filter: blur(6px);
+}
+.header-inner{max-width:var(--max-width);margin:0 auto;display:flex;align-items:center;justify-content:space-between;padding:12px 18px;gap:12px}
+.brand{font-family:Orbitron, sans-serif;color:var(--accent1);font-weight:700;letter-spacing:0.6px;font-size:18px}
+.nav{display:flex;gap:12px;align-items:center}
+.nav a{color:rgba(255,255,255,0.95);text-decoration:none;padding:8px 10px;border-radius:8px;transition:all .18s}
+.nav a:hover,.nav a.active{color:var(--bg-2);background:linear-gradient(90deg,var(--accent1),var(--accent2));box-shadow:0 8px 26px rgba(0,247,255,0.06)}
+
+/* Mobile hamburger */
+.hamburger{display:none;border:0;background:transparent;color:inherit}
+.hamburger .bar{width:22px;height:2px;background:var(--muted);display:block;position:relative}
+.hamburger .bar::before,.hamburger .bar::after{content:"";position:absolute;left:0;right:0;height:2px;background:var(--muted)}
+.hamburger .bar::before{top:-6px} .hamburger .bar::after{bottom:-6px}
+
+/* HERO */
+.hero{padding-top:96px;padding-bottom:44px}
+.hero-inner{display:grid;grid-template-columns:1fr 320px;gap:28px;align-items:center}
+@media(max-width:920px){ .hero-inner{grid-template-columns:1fr} }
+
+.hero-card{
+  padding:28px;border-radius:16px;background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
+  border:1px solid rgba(255,255,255,0.03);box-shadow:0 20px 50px rgba(2,8,23,0.6)
+}
+.hero-title{font-family:Orbitron, sans-serif;font-size:clamp(28px,6vw,44px);margin:0 0 10px;color:var(--accent1)}
+.hero-sub{color:var(--muted);margin-bottom:18px;max-width:52ch}
+.hero-cta{display:flex;gap:12px;flex-wrap:wrap}
+.btn{display:inline-block;padding:10px 14px;border-radius:10px;font-weight:700;text-decoration:none;border:1px solid rgba(255,255,255,0.03)}
+.btn-primary{background:linear-gradient(90deg,var(--accent1),var(--accent2));color:#041028;box-shadow:0 12px 34px rgba(0,247,255,0.08)}
+.btn-ghost{background:transparent;color:var(--accent1);border:1px solid rgba(0,247,255,0.12)}
+
+/* Stats box */
+.stats{display:flex;flex-direction:column;gap:10px}
+.stat{display:flex;align-items:center;gap:12px;background:rgba(255,255,255,0.02);padding:10px;border-radius:10px}
+.stat-ttl{font-family:Orbitron, sans-serif;font-size:18px;color:var(--accent2)}
+.stat-sub{color:var(--muted);font-size:0.95rem}
+
+/* ABOUT */
+.section{padding:56px 0}
+.split{display:grid;grid-template-columns:1fr 360px;gap:20px;align-items:start}
+@media(max-width:920px){ .split{grid-template-columns:1fr} }
+.card{background:var(--glass);padding:18px;border-radius:var(--card-radius);border:1px solid rgba(255,255,255,0.03);box-shadow:0 12px 36px rgba(2,8,23,0.6)}
+
+/* SERVICES */
+.services-grid{display:grid;grid-template-columns:repeat(1,1fr);gap:18px}
+@media(min-width:640px){ .services-grid{grid-template-columns:repeat(2,1fr)} }
+@media(min-width:980px){ .services-grid{grid-template-columns:repeat(3,1fr)} }
+
+.service{
+  padding:22px;border-radius:12px;background:linear-gradient(180deg, rgba(255,255,255,0.01), rgba(255,255,255,0.005));
+  border:1px solid rgba(255,255,255,0.03);text-align:center;display:flex;flex-direction:column;gap:12px;min-height:170px;transition:transform .32s var(--ease), box-shadow .32s var(--ease);
+}
+.service:hover{transform:translateY(-10px);box-shadow:0 40px 100px rgba(2,8,23,0.7)}
+.icon{width:72px;height:72px;border-radius:14px;display:flex;align-items:center;justify-content:center;margin:0 auto;font-size:28px;color:var(--accent1);background:linear-gradient(90deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));box-shadow:0 10px 30px rgba(0,0,0,0.45)}
+
+/* PORTFOLIO */
+.portfolio-grid{display:grid;grid-template-columns:1fr;gap:18px}
+@media(min-width:780px){ .portfolio-grid{grid-template-columns:repeat(2,1fr)} }
+@media(min-width:1100px){ .portfolio-grid{grid-template-columns:repeat(3,1fr)} }
+
+.portfolio-item{border-radius:12px;overflow:hidden;border:1px solid rgba(255,255,255,0.03);background:var(--card);display:flex;flex-direction:column;transition:transform .28s,box-shadow .28s}
+.portfolio-thumb{width:100%;height:160px;object-fit:cover;display:block}
+.portfolio-body{padding:14px;display:flex;flex-direction:column;gap:10px}
+.tag-row{display:flex;gap:8px;flex-wrap:wrap}
+.tag{font-size:12px;padding:6px 8px;border-radius:999px;background:rgba(255,255,255,0.02);color:var(--muted)}
+
+/* CONTACT */
+.contact-grid{display:grid;grid-template-columns:1fr 420px;gap:20px}
+@media(max-width:980px){ .contact-grid{grid-template-columns:1fr} }
+.field{display:flex;flex-direction:column;margin-bottom:10px}
+.field label{font-size:0.9rem;color:var(--muted);margin-bottom:6px}
+input[type="text"],input[type="email"],textarea{
+  padding:10px;border-radius:8px;border:1px solid rgba(255,255,255,0.04);background:transparent;color:var(--muted)
+}
+
+/* Footer */
+.footer{padding:26px 0;text-align:center;color:var(--muted);border-top:1px solid rgba(255,255,255,0.02);margin-top:20px}
+
+/* Animations: initial state & in-view toggles */
+.anim {opacity:0;transform:translateY(14px);transition:opacity var(--anim-ms) var(--ease), transform var(--anim-ms) var(--ease);will-change:opacity,transform}
+.anim.in-view{opacity:1;transform:none}
+.anim-item{opacity:0;transform:translateY(10px) scale(.995);transition:opacity calc(var(--anim-ms) * .9) var(--ease), transform calc(var(--anim-ms) * .9) var(--ease)}
+.anim-item.in-view{opacity:1;transform:none}
+
+/* Accessibility & focus */
+a:focus, button:focus, input:focus, textarea:focus{outline:3px solid rgba(0,247,255,0.12);outline-offset:3px;border-radius:6px}
+
+/* Mobile nav adjustments */
+@media(max-width:880px){
+  .nav{display:none}
+  .hamburger{display:block}
+  .header-inner{gap:8px}
+  .hero-inner{grid-template-columns:1fr}
+  .portfolio-thumb{height:140px}
+  .services-grid{gap:12px}
+  .container{padding:0 14px}
+  .section{padding:40px 0}
+}
+</style>
 </head>
 <body>
-  <!-- Header / Navigation -->
-  <header>
-    <div class="container nav">
-      <h1 class="logo">CyberShield<span>.</span></h1>
-      <nav>
-        <ul>
-          <li><a href="#home">Home</a></li>
-          <li><a href="#about">About</a></li>
-          <li><a href="#services">Services</a></li>
-          <li><a href="#projects">Projects</a></li>
-          <li><a href="#contact">Contact</a></li>
+
+<!-- Header -->
+<header class="header">
+  <div class="header-inner container">
+    <div class="brand">CyberShield<span style="color:var(--accent2)">.</span></div>
+
+    <nav class="nav" aria-label="Main navigation">
+      <a href="#home">Home</a>
+      <a href="#about">About</a>
+      <a href="#services">Services</a>
+      <a href="#projects">Projects</a>
+      <a href="#contact">Contact</a>
+    </nav>
+
+    <button class="hamburger" aria-label="Menu" onclick="toggleMobileNav(event)"><span class="bar"></span></button>
+  </div>
+</header>
+
+<main>
+
+  <!-- HERO -->
+  <section id="home" class="hero anim">
+    <div class="container hero-inner">
+      <div class="hero-card anim-item">
+        <h1 class="hero-title">CyberShield — Protecting Your Digital World</h1>
+        <p class="hero-sub">We are a dedicated cybersecurity agency: penetration testing, cloud security, incident response, and continuous improvement.</p>
+        <div class="hero-cta">
+          <a href="#contact" class="btn btn-primary">Get a Quote</a>
+          <a href="#projects" class="btn btn-ghost">View Projects</a>
+        </div>
+      </div>
+
+      <aside class="anim-item stats">
+        <div class="stat">
+          <div class="stat-ttl">120+</div>
+          <div class="stat-sub">Engagements</div>
+        </div>
+        <div class="stat">
+          <div class="stat-ttl">92%</div>
+          <div class="stat-sub">Fix Acceptance</div>
+        </div>
+        <div class="stat">
+          <div class="stat-ttl">24/7</div>
+          <div class="stat-sub">Monitoring Option</div>
+        </div>
+      </aside>
+    </div>
+  </section>
+
+  <!-- ABOUT -->
+  <section id="about" class="section anim">
+    <div class="container split">
+      <div class="card anim-item">
+        <h2 class="section-title">About CyberShield</h2>
+        <p>CyberShield is a professional cybersecurity team helping organizations secure apps, cloud, and infrastructure. We deliver redacted, executive-ready reports and prioritized remediation plans.</p>
+        <ul class="muted">
+          <li>OWASP Top 10 & API security</li>
+          <li>Cloud Identity & Access Management (IAM)</li>
+          <li>Incident response & forensic analysis</li>
         </ul>
-      </nav>
-    </div>
-  </header>
+      </div>
 
-  <!-- Hero Section -->
-  <section id="home" class="hero">
-    <div class="hero-content">
-      <h2>Protecting Your Digital World</h2>
-      <p>We are a cybersecurity team dedicated to keeping businesses secure.</p>
-      <a href="#contact" class="btn">Get in Touch</a>
+      <aside class="card anim-item">
+        <h3 style="color:var(--accent2);margin:0 0 10px">Why choose us</h3>
+        <p class="muted">Practical fixes, fast retesting, and transparent communication. NDA available for full report access.</p>
+      </aside>
     </div>
   </section>
 
-  <!-- About -->
-  <section id="about" class="about container">
-    <h2>About Us</h2>
-    <p>CyberShield is a professional cybersecurity agency specializing in penetration testing, vulnerability assessment, and security consulting. Our mission is to protect organizations from evolving cyber threats.</p>
-  </section>
-
-  <!-- Services -->
-  <section id="services" class="services">
+  <!-- SERVICES -->
+  <section id="services" class="section anim">
     <div class="container">
-      <h2>Our Services</h2>
-      <div class="grid">
-        <div class="card">
+      <h2 class="section-title center">Our Services</h2>
+
+      <div class="services-grid">
+        <div class="service anim-item">
+          <div class="icon"><i class="fa-solid fa-user-secret"></i></div>
           <h3>Penetration Testing</h3>
-          <p>Identify and exploit vulnerabilities before attackers can.</p>
+          <p class="muted">Web, API and infra testing to find critical gaps and verify remediation.</p>
         </div>
-        <div class="card">
-          <h3>Web Security</h3>
-          <p>Protect websites and apps against common exploits.</p>
-        </div>
-        <div class="card">
+
+        <div class="service anim-item">
+          <div class="icon"><i class="fa-solid fa-cloud"></i></div>
           <h3>Cloud Security</h3>
-          <p>Ensure safe cloud deployments with continuous monitoring.</p>
+          <p class="muted">IAM reviews, S3 & storage inspection, and secure baseline automation.</p>
         </div>
-        <div class="card">
-          <h3>Incident Response</h3>
-          <p>Rapid investigation and remediation of breaches.</p>
+
+        <div class="service anim-item">
+          <div class="icon"><i class="fa-solid fa-bug"></i></div>
+          <h3>Malware Analysis</h3>
+          <p class="muted">Root cause analysis, removal, and forensics for compromised environments.</p>
+        </div>
+
+        <div class="service anim-item">
+          <div class="icon"><i class="fa-solid fa-network-wired"></i></div>
+          <h3>Network Hardening</h3>
+          <p class="muted">Segmentation, IDS tuning and secure architecture review.</p>
+        </div>
+
+        <div class="service anim-item">
+          <div class="icon"><i class="fa-solid fa-magnifying-glass"></i></div>
+          <h3>SOC & Monitoring</h3>
+          <p class="muted">SIEM tuning, alert reduction and detection engineering.</p>
+        </div>
+
+        <div class="service anim-item">
+          <div class="icon"><i class="fa-solid fa-chalkboard-user"></i></div>
+          <h3>Security Training</h3>
+          <p class="muted">Phishing simulations and developer-focused secure coding workshops.</p>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- Projects -->
-  <section id="projects" class="projects container">
-    <h2>Projects</h2>
-    <div class="grid">
-      <div class="project-card">E-Commerce Security Audit</div>
-      <div class="project-card">Healthcare Network Defense</div>
-      <div class="project-card">Banking App Pen-Testing</div>
-    </div>
-  </section>
-
-  <!-- Contact -->
-  <section id="contact" class="contact">
+  <!-- PROJECTS -->
+  <section id="projects" class="section anim">
     <div class="container">
-      <h2>Contact Us</h2>
-      <form action="https://formspree.io/f/your-form-id" method="POST">
-        <input type="text" name="name" placeholder="Your Name" required>
-        <input type="email" name="_replyto" placeholder="Your Email" required>
-        <textarea name="message" placeholder="Your Message" required></textarea>
-        <button type="submit" class="btn">Send Message</button>
-      </form>
+      <h2 class="section-title center">Selected Projects</h2>
+      <p class="muted center">Redacted case studies available under NDA.</p>
+
+      <div class="portfolio-grid" style="margin-top:18px;">
+        <article class="portfolio-item anim-item">
+          <img class="portfolio-thumb" src="https://picsum.photos/600/360?random=11" alt="Project 1">
+          <div class="portfolio-body">
+            <h4>E-commerce PenTest (redacted)</h4>
+            <p class="muted">OWASP Top findings, SQLi remediations, session hardening.</p>
+            <div class="tag-row"><span class="tag">SQLi</span><span class="tag">OWASP</span></div>
+            <a class="btn btn-primary" href="#" style="margin-top:10px">View Case</a>
+          </div>
+        </article>
+
+        <article class="portfolio-item anim-item">
+          <img class="portfolio-thumb" src="https://picsum.photos/600/360?random=12" alt="Project 2">
+          <div class="portfolio-body">
+            <h4>WordPress Malware Cleanup</h4>
+            <p class="muted">Removed obfuscated backdoors, hardened and monitored.</p>
+            <div class="tag-row"><span class="tag">WordPress</span><span class="tag">Malware</span></div>
+            <a class="btn btn-primary" href="#" style="margin-top:10px">View Case</a>
+          </div>
+        </article>
+
+        <article class="portfolio-item anim-item">
+          <img class="portfolio-thumb" src="https://picsum.photos/600/360?random=13" alt="Project 3">
+          <div class="portfolio-body">
+            <h4>Cloud Misconfig Review</h4>
+            <p class="muted">IAM & S3 permissions audit; automated fix playbook.</p>
+            <div class="tag-row"><span class="tag">Cloud</span><span class="tag">IAM</span></div>
+            <a class="btn btn-primary" href="#" style="margin-top:10px">View Case</a>
+          </div>
+        </article>
+      </div>
     </div>
   </section>
 
-  <!-- Footer -->
-  <footer>
-    <p>© 2025 CyberShield Security. All rights reserved.</p>
-  </footer>
+  <!-- CONTACT -->
+  <section id="contact" class="section anim">
+    <div class="container">
+      <h2 class="section-title center">Contact Us</h2>
+
+      <div class="contact-grid">
+        <div class="card anim-item">
+          <p class="muted">Let's discuss a scope and plan that fits your risk profile. NDA available.</p>
+          <p><strong>Email</strong>: <a href="mailto:alira6018@gmail.com" style="color:var(--accent1)">alira6018@gmail.com</a></p>
+          <p><strong>GitHub</strong>: <a href="https://github.com/Alirazawaris" target="_blank" rel="noopener" style="color:var(--accent1)">Alirazawaris</a></p>
+        </div>
+
+        <form id="contact-form" class="card anim-item" action="https://formspree.io/f/FORMSPREE_ENDPOINT" method="POST">
+          <div class="field"><label>Name</label><input name="name" type="text" required></div>
+          <div class="field"><label>Email</label><input name="_replyto" type="email" required></div>
+          <div class="field"><label>Message</label><textarea name="message" rows="5" required></textarea></div>
+          <!-- anti-spam honeypot -->
+          <input type="text" name="_gotcha" style="display:none">
+          <div style="display:flex;gap:12px;align-items:center">
+            <button class="btn btn-primary" type="submit">Send Message</button>
+            <div id="form-status" style="color:var(--muted);font-size:0.95rem"></div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer class="footer">
+  <div class="container center muted">© <span id="yr"></span> CyberShield — All rights reserved</div>
+</footer>
+
+<script>
+/* ---------- small helper JS ---------- */
+
+// fill year
+document.getElementById('yr').textContent = new Date().getFullYear();
+
+// Mobile nav toggle helper (keeps simple)
+function toggleMobileNav(e){
+  const nav = document.querySelector('.nav');
+  if(!nav) return;
+  nav.style.display = (nav.style.display === 'flex') ? 'none' : 'flex';
+}
+
+// Smooth scroll offset when clicking nav anchors
+document.querySelectorAll('a[href^="#"]').forEach(link=>{
+  link.addEventListener('click', function(e){
+    const href = this.getAttribute('href');
+    if(!href.startsWith('#')) return;
+    const targ = document.querySelector(href);
+    if(!targ) return;
+    e.preventDefault();
+    const headerH = document.querySelector('.header').offsetHeight;
+    const top = targ.getBoundingClientRect().top + window.scrollY - headerH - 8;
+    window.scrollTo({top, behavior:'smooth'});
+    // close mobile nav if open
+    const nav = document.querySelector('.nav');
+    if(window.innerWidth <= 880 && nav) nav.style.display = 'none';
+  });
+});
+
+// IntersectionObserver animations + stagger for anim-item
+(function(){
+  const sections = document.querySelectorAll('.anim');
+  const items = document.querySelectorAll('.anim-item');
+
+  const observer = new IntersectionObserver((entries, obs) => {
+    entries.forEach(entry => {
+      if(entry.isIntersecting){
+        entry.target.classList.add('in-view');
+        // if entry contains anim-items, stagger them
+        const list = entry.target.querySelectorAll('.anim-item');
+        if(list.length){
+          list.forEach((el,i)=> {
+            el.style.transitionDelay = (i * 80) + 'ms';
+            el.classList.add('in-view');
+          });
+        }
+        obs.unobserve(entry.target);
+      }
+    });
+  }, {threshold: 0.12, rootMargin: '0px 0px -6% 0px'});
+
+  sections.forEach(s => observer.observe(s));
+  // separate observer for isolated items not inside sections
+  items.forEach(i => {
+    if(!i.closest('.anim')) i.classList.add('anim-item'); // ensure classes
+  });
+})();
+
+// Contact form AJAX submit -> Formspree (keeps on page)
+(function(){
+  const form = document.getElementById('contact-form');
+  const status = document.getElementById('form-status');
+  if(!form) return;
+  form.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    const action = form.action;
+    if(!action || action.includes('FORMSPREE_ENDPOINT')){
+      status.textContent = 'Configure the form action with your Formspree endpoint.';
+      return;
+    }
+    status.textContent = 'Sending…';
+    const data = new FormData(form);
+    try{
+      const res = await fetch(action, {method:'POST', body: data, headers:{'Accept':'application/json'}});
+      if(res.ok){
+        status.textContent = 'Message sent — thank you.';
+        form.reset();
+      } else {
+        const json = await res.json();
+        status.textContent = (json && json.error) ? json.error : 'Send failed — email directly.';
+      }
+    }catch(err){
+      status.textContent = 'Network error — please email directly.';
+    }
+  });
+})();
+</script>
 </body>
 </html>
