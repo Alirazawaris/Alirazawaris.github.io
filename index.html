@@ -1,4 +1,5 @@
-<!doctype html>
+
+     <!doctype html>
 <html lang="en">
 <head>
   <meta charset="utf-8" />
@@ -21,7 +22,7 @@
 
     <header class="hero" role="banner">
       <div class="hero-inner">
-        <div class="card-3d hero-card">
+        <div class="card-3d hero-card" data-tilt>
           <div class="card-layer bg-layer"></div>
           <div class="card-layer mid-layer"></div>
           <div class="card-layer top-layer">
@@ -34,7 +35,7 @@
           </div>
         </div>
 
-        <div class="card-3d badge-card">
+        <div class="card-3d badge-card" data-tilt data-tilt-scale="1.04" data-tilt-max="14">
           <div class="card-layer badge-bg"></div>
           <div class="card-layer badge-top">
             <div class="badge-large">NEON TRUST</div>
@@ -45,7 +46,7 @@
     </header>
 
     <main class="main" id="main">
-      <section id="about" class="card-3d content-card">
+      <section id="about" class="card-3d content-card" data-tilt>
         <div class="card-layer bg-layer"></div>
         <div class="card-layer top-layer">
           <h2>About</h2>
@@ -63,7 +64,7 @@
       <section id="projects" class="projects-grid">
         <h2 class="section-heading">Selected Projects</h2>
 
-        <article class="card-3d project-card">
+        <article class="card-3d project-card" data-tilt>
           <div class="card-layer bg-layer"></div>
           <div class="card-layer top-layer">
             <h3>Simulated E-commerce Pentest (redacted)</h3>
@@ -71,7 +72,7 @@
           </div>
         </article>
 
-        <article class="card-3d project-card">
+        <article class="card-3d project-card" data-tilt>
           <div class="card-layer bg-layer"></div>
           <div class="card-layer top-layer">
             <h3>WordPress Malware Cleanup</h3>
@@ -79,7 +80,7 @@
           </div>
         </article>
 
-        <article class="card-3d project-card">
+        <article class="card-3d project-card" data-tilt>
           <div class="card-layer bg-layer"></div>
           <div class="card-layer top-layer">
             <h3>Cloud Misconfiguration Review</h3>
@@ -88,7 +89,7 @@
         </article>
       </section>
 
-      <section id="services" class="card-3d content-card">
+      <section id="services" class="card-3d content-card" data-tilt>
         <div class="card-layer bg-layer"></div>
         <div class="card-layer top-layer">
           <h2>Services</h2>
@@ -102,7 +103,7 @@
         </div>
       </section>
 
-      <section id="contact" class="card-3d contact-card">
+      <section id="contact" class="card-3d contact-card" data-tilt>
         <div class="card-layer bg-layer"></div>
         <div class="card-layer top-layer">
           <h2>Contact</h2>
@@ -130,7 +131,153 @@
   </div>
 
   <script>
-    document.getElementById('year').textContent = new Date().getFullYear();
+  /**
+   * Lightweight tilt / parallax effect for .card-3d
+   * - Adds smooth mousemove-based tilt
+   * - Uses data attributes for max tilt & scale
+   * - Adds deviceorientation fallback on mobile
+   */
+
+  (function () {
+    const cards = Array.from(document.querySelectorAll('[data-tilt]'));
+    if (!cards.length) return;
+
+    // Config defaults
+    const defaultMax = 14; // degrees
+    const defaultScale = 1.02;
+    const ease = 0.12; // smoothing (0-1)
+
+    // state per card
+    const states = new Map();
+
+    cards.forEach(card => {
+      states.set(card, {
+        currentX: 0,
+        currentY: 0,
+        targetX: 0,
+        targetY: 0,
+        currentScale: 1,
+        targetScale: parseFloat(card.getAttribute('data-tilt-scale')) || defaultScale,
+        max: parseFloat(card.getAttribute('data-tilt-max')) || defaultMax,
+      });
+
+      // pointer events
+      card.addEventListener('mouseenter', () => {
+        const s = states.get(card);
+        s.currentScale = 1;
+        s.targetScale = parseFloat(card.getAttribute('data-tilt-scale')) || defaultScale;
+      });
+
+      card.addEventListener('mouseleave', () => {
+        const s = states.get(card);
+        s.targetX = 0;
+        s.targetY = 0;
+        s.targetScale = 1;
+      });
+
+      card.addEventListener('mousemove', e => {
+        const rect = card.getBoundingClientRect();
+        const cx = rect.left + rect.width / 2;
+        const cy = rect.top + rect.height / 2;
+        const relX = (e.clientX - cx) / (rect.width / 2);
+        const relY = (e.clientY - cy) / (rect.height / 2);
+        const s = states.get(card);
+        s.targetX = clamp(relY * s.max * -1, -s.max, s.max); // rotateX (inverted)
+        s.targetY = clamp(relX * s.max, -s.max, s.max); // rotateY
+      });
+
+      // touch fallback: on touchmove, approximate using touches[0]
+      card.addEventListener('touchstart', () => {
+        const s = states.get(card);
+        s.targetScale = parseFloat(card.getAttribute('data-tilt-scale')) || defaultScale;
+      }, {passive:true});
+
+      card.addEventListener('touchmove', e => {
+        const t = e.touches[0];
+        if (!t) return;
+        const rect = card.getBoundingClientRect();
+        const cx = rect.left + rect.width / 2;
+        const cy = rect.top + rect.height / 2;
+        const relX = (t.clientX - cx) / (rect.width / 2);
+        const relY = (t.clientY - cy) / (rect.height / 2);
+        const s = states.get(card);
+        s.targetX = clamp(relY * s.max * -1, -s.max, s.max);
+        s.targetY = clamp(relX * s.max, -s.max, s.max);
+      }, {passive:true});
+
+      card.addEventListener('touchend', () => {
+        const s = states.get(card);
+        s.targetX = 0;
+        s.targetY = 0;
+        s.targetScale = 1;
+      });
+    });
+
+    // Device orientation (mobile tilt)
+    if (window.DeviceOrientationEvent) {
+      window.addEventListener('deviceorientation', ev => {
+        // beta: front-back tilt [-180,180]; gamma: left-right tilt [-90,90]
+        const gamma = ev.gamma || 0; // left-right
+        const beta = ev.beta || 0; // front-back
+        cards.forEach(card => {
+          const s = states.get(card);
+          // map gamma/beta to rotation roughly (normalized)
+          s.targetY = clamp((gamma / 45) * s.max, -s.max, s.max);
+          s.targetX = clamp((beta / 45) * s.max * -1, -s.max, s.max);
+          s.targetScale = parseFloat(card.getAttribute('data-tilt-scale')) || defaultScale;
+        });
+      }, {passive:true});
+    }
+
+    // animation loop
+    function rafLoop() {
+      cards.forEach(card => {
+        const s = states.get(card);
+        // spring smoothing
+        s.currentX += (s.targetX - s.currentX) * ease;
+        s.currentY += (s.targetY - s.currentY) * ease;
+        s.currentScale += (s.targetScale - s.currentScale) * ease;
+
+        // apply transforms: rotateX, rotateY and small translateZ on layers
+        const rotX = s.currentX.toFixed(2);
+        const rotY = s.currentY.toFixed(2);
+        const scale = s.currentScale.toFixed(3);
+
+        // primary transform for the card container
+        card.style.transform = `perspective(1200px) rotateX(${rotX}deg) rotateY(${rotY}deg) scale(${scale})`;
+
+        // inner depth layers: pick by class and offset transforms
+        const bg = card.querySelector('.bg-layer');
+        const mid = card.querySelector('.mid-layer');
+        const top = card.querySelector('.top-layer');
+
+        if (bg) {
+          // deeper, inverse subtle movement
+          const bgTx = (-s.currentY * 0.22).toFixed(2);
+          const bgTy = (s.currentX * 0.22).toFixed(2);
+          bg.style.transform = `translate3d(${bgTx}px, ${bgTy}px, -40px) rotateX(${(s.currentX * 0.06).toFixed(2)}deg)`;
+        }
+        if (mid) {
+          const mdTx = (-s.currentY * 0.12).toFixed(2);
+          const mdTy = (s.currentX * 0.12).toFixed(2);
+          mid.style.transform = `translate3d(${mdTx}px, ${mdTy}px, -18px) rotateX(${(s.currentX * 0.04).toFixed(2)}deg)`;
+        }
+        if (top) {
+          // top layer gets tiny parallax shift (to keep text readable)
+          const tpTx = (-s.currentY * 0.04).toFixed(2);
+          const tpTy = (s.currentX * 0.04).toFixed(2);
+          top.style.transform = `translate3d(${tpTx}px, ${tpTy}px, 0px)`;
+        }
+      });
+      requestAnimationFrame(rafLoop);
+    }
+    requestAnimationFrame(rafLoop);
+
+    // Utility
+    function clamp(v, a, b) { return Math.max(a, Math.min(b, v)); }
+  })();
   </script>
+
+  <script>document.getElementById('year').textContent = new Date().getFullYear();</script>
 </body>
 </html>
