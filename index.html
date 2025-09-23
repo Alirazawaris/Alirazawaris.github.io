@@ -1,283 +1,224 @@
 
-     <!doctype html>
+<!doctype html>
 <html lang="en">
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Ali Raza — Cybersecurity Portfolio</title>
-  <meta name="description" content="Ali Raza — Cybersecurity specialist: pentests, vulnerability assessments, malware removal. Redacted reports available." />
-  <meta property="og:title" content="Ali Raza — Cybersecurity Specialist">
-  <meta property="og:description" content="Web & API pentests, cloud audits, malware removal — redacted reports on request.">
+  <title>CyberSecure Solutions — Company Portfolio</title>
+  <meta name="description" content="CyberSecure Solutions — Team of ethical hackers providing pentests, cloud audits, malware removal and incident response." />
+  <meta property="og:title" content="CyberSecure Solutions">
+  <meta property="og:description" content="We secure applications, cloud and networks — redacted reports available.">
   <meta property="og:image" content="https://Alirazawaris.github.io/og-image.png">
   <meta name="twitter:card" content="summary_large_image">
 
-  <link rel="stylesheet" href="styles.css" />
+  <!-- FontAwesome (icons) -->
+  <script src="https://kit.fontawesome.com/a2e0e9e6f2.js" crossorigin="anonymous"></script>
+
+  <!-- Your main CSS (keeps the VIP look you already have) -->
+  <link rel="stylesheet" href="styles.css">
+
+  <!-- Additional styles for nav, service cards and portfolio gallery -->
+  <style>
+    :root{
+      --accent1: #00f7ff;
+      --accent2: #ff00e6;
+      --card-glow: 0 10px 40px rgba(0,247,255,0.06);
+      --glass: rgba(255,255,255,0.03);
+    }
+
+    /* Fixed top navigation (keeps it visible) */
+    header.navbar {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 1200;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      padding:14px 28px;
+      background:linear-gradient(180deg, rgba(2,6,15,0.55), rgba(2,6,15,0.35));
+      backdrop-filter: blur(8px);
+      border-bottom:1px solid rgba(255,255,255,0.02);
+    }
+    .brand { font-family: 'Orbitron', sans-serif; color:var(--accent1); font-weight:800; letter-spacing:0.6px; }
+    nav.main-nav ul{display:flex;gap:18px;list-style:none;margin:0}
+    nav.main-nav a{color:rgba(255,255,255,0.85);text-decoration:none;padding:8px 10px;border-radius:8px;transition:all .18s}
+    nav.main-nav a:hover{color:var(--accent1);background:rgba(255,255,255,0.02)}
+
+    /* Page offset so fixed header doesn't cover sections */
+    main#content { padding-top:86px; }
+
+    /* Services grid (small refinement if your main CSS already covers it) */
+    .service-grid { display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:22px;margin-top:18px }
+    .card {
+      background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
+      border-radius:14px;padding:20px;text-align:center;position:relative;overflow:hidden;border:1px solid rgba(255,255,255,0.03);
+      box-shadow: var(--card-glow);
+      transition: transform .36s cubic-bezier(.2,.9,.2,1), box-shadow .36s;
+    }
+    .card:hover{ transform: translateY(-12px) scale(1.02); box-shadow: 0 32px 80px rgba(2,8,23,0.7) }
+
+    .card i { font-size:34px;color:var(--accent1); margin-bottom:10px; display:block; }
+    .card h3{ margin:8px 0; color:#eaf6ff }
+    .card p{ color: #bcd0e6; font-size:0.95rem }
+
+    /* Portfolio gallery */
+    .portfolio-grid { display:grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap:22px; margin-top:18px }
+    .portfolio-item {
+      position:relative;
+      border-radius:12px;
+      overflow:hidden;
+      background:var(--glass);
+      border:1px solid rgba(255,255,255,0.03);
+      box-shadow: 0 10px 30px rgba(2,8,23,0.45);
+      transition: transform .36s, box-shadow .36s;
+    }
+    .portfolio-item:hover{ transform: translateY(-10px) scale(1.02); box-shadow: 0 40px 100px rgba(3,6,20,0.7) }
+
+    .portfolio-thumb { width:100%; height:170px; object-fit:cover; display:block; }
+    .portfolio-content { padding:14px 16px; background:linear-gradient(180deg, rgba(2,6,15,0.02), transparent) }
+    .portfolio-content h4{ margin:0 0 8px; color:var(--accent1); font-size:1.05rem }
+    .portfolio-content p{ color: #bfd8f1; font-size:0.92rem; margin:0 0 12px }
+
+    /* Hover overlay (appears above image) */
+    .portfolio-overlay {
+      position:absolute; inset:0; display:flex; align-items:end; justify-content:center; padding:18px;
+      background: linear-gradient(180deg, rgba(2,6,15,0.0), rgba(2,6,15,0.55));
+      opacity:0; transform:translateY(6px); transition: all .28s;
+    }
+    .portfolio-item:hover .portfolio-overlay { opacity:1; transform:translateY(0); }
+    .portfolio-cta { background: linear-gradient(90deg,var(--accent1),var(--accent2)); padding:10px 14px;border-radius:10px;color:#031025;font-weight:700;text-decoration:none;box-shadow:0 10px 30px rgba(0,247,255,0.12) }
+
+    /* Case label and tag row */
+    .tags { display:flex; gap:8px; flex-wrap:wrap; margin-top:10px }
+    .tag { font-size:12px; background:rgba(255,255,255,0.02); padding:6px 8px; border-radius:999px; color: #9fb7d3; }
+
+    /* Small utility & responsiveness */
+    @media (max-width:720px){
+      header.navbar{padding:10px 14px}
+      .portfolio-thumb{height:140px}
+      section{padding:60px 16px}
+    }
+  </style>
 </head>
 <body>
-  <div class="scene">
-    <!-- Animated background orbs -->
-    <div class="orb orb-a"></div>
-    <div class="orb orb-b"></div>
-    <div class="orb orb-c"></div>
+  <!-- NAVBAR -->
+  <header class="navbar" role="banner">
+    <div class="brand">CyberSecure Solutions</div>
+    <nav class="main-nav" role="navigation" aria-label="Main">
+      <ul>
+        <li><a href="#home">Home</a></li>
+        <li><a href="#about">About</a></li>
+        <li><a href="#services">Services</a></li>
+        <li><a href="#portfolio">Portfolio</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </nav>
+  </header>
 
-    <header class="hero" role="banner">
-      <div class="hero-inner">
-        <div class="card-3d hero-card" data-tilt>
-          <div class="card-layer bg-layer"></div>
-          <div class="card-layer mid-layer"></div>
-          <div class="card-layer top-layer">
-            <h1 class="title">Ali Raza</h1>
-            <p class="subtitle">Securing digital assets with ethical hacking, penetration testing, and incident response</p>
-            <div class="actions">
-              <a class="btn btn-primary" href="#contact">Contact</a>
-              <a class="btn btn-outline" href="#projects">Projects</a>
+  <!-- MAIN -->
+  <main id="content">
+    <!-- HERO -->
+    <section id="home" class="hero" aria-label="Home">
+      <div style="max-width:1100px;margin:0 auto;padding:28px">
+        <div style="display:flex;align-items:center;gap:22px;flex-wrap:wrap">
+          <div style="flex:1">
+            <h1 style="font-family:Orbitron, sans-serif;font-size:36px;color:var(--accent1)">CyberSecure Solutions</h1>
+            <p style="color:#bcd0e6;max-width:780px">We are a team of ethical hackers and cybersecurity professionals protecting businesses from modern threats — web apps, cloud workloads, networks, and incidents. We deliver redacted reports, remediation roadmaps, and verified retests.</p>
+            <div style="margin-top:14px">
+              <a class="btn btn-primary" href="#contact" style="margin-right:10px">Get a Quote</a>
+              <a class="btn btn-outline" href="#portfolio">See Work</a>
+            </div>
+          </div>
+
+          <!-- right small company card -->
+          <div style="width:260px">
+            <div class="card" style="padding:14px">
+              <div style="font-size:13px;color:#9fb7d3">Trusted by</div>
+              <div style="margin-top:12px;display:flex;flex-direction:column;gap:8px">
+                <div style="background:linear-gradient(90deg,var(--accent1),var(--accent2));padding:8px;border-radius:8px;color:#031025;font-weight:700;text-align:center">Startup</div>
+                <div style="background:rgba(255,255,255,0.02);padding:8px;border-radius:8px;color:#cfe6ff;text-align:center">SaaS</div>
+                <div style="background:rgba(255,255,255,0.02);padding:8px;border-radius:8px;color:#cfe6ff;text-align:center">Healthcare</div>
+              </div>
             </div>
           </div>
         </div>
+      </div>
+    </section>
 
-        <div class="card-3d badge-card" data-tilt data-tilt-scale="1.04" data-tilt-max="14">
-          <div class="card-layer badge-bg"></div>
-          <div class="card-layer badge-top">
-            <div class="badge-large">NEON TRUST</div>
-            <div class="badge-sub">Redacted samples on request</div>
+    <!-- ABOUT -->
+    <section id="about" aria-label="About">
+      <div style="max-width:1100px;margin:0 auto">
+        <div style="display:grid;grid-template-columns:1fr 340px;gap:22px;align-items:start">
+          <div class="card" style="padding:22px">
+            <h2 style="margin-top:0;color:var(--accent1);font-family:Orbitron, sans-serif">About Us</h2>
+            <p style="color:#bfd8f1">We are a multidisciplinary cybersecurity team focused on realistic engagement, measurable outcomes, and long-term resilience. Our engineers and analysts combine offensive testing, cloud expertise, and incident response to reduce risk and improve security posture.</p>
+            <div style="margin-top:10px" class="tags">
+              <span class="tag">OWASP Top10</span>
+              <span class="tag">MITRE ATT&CK</span>
+              <span class="tag">Cloud Secure</span>
+            </div>
+          </div>
+
+          <aside class="card" style="padding:16px">
+            <h3 style="margin:0 0 8px;color:var(--accent2)">Why choose us</h3>
+            <ul style="color:#cfe6ff;margin-top:8px;line-height:1.6">
+              <li>Practical, prioritized fixes</li>
+              <li>Redacted, professional reporting</li>
+              <li>Post-fix verification & retests</li>
+            </ul>
+          </aside>
+        </div>
+      </div>
+    </section>
+
+    <!-- SERVICES -->
+    <section id="services" aria-label="Services">
+      <div style="max-width:1100px;margin:0 auto">
+        <h2 style="font-family:Orbitron, sans-serif;color:var(--accent1);margin-bottom:8px">Our Services</h2>
+        <div class="service-grid">
+          <div class="card">
+            <i class="fas fa-user-secret"></i>
+            <h3>Penetration Testing</h3>
+            <p>Web, API and infrastructure pentests with prioritized remediation and verification.</p>
+          </div>
+
+          <div class="card">
+            <i class="fas fa-shield-alt"></i>
+            <h3>Cloud Security</h3>
+            <p>Cloud configuration audits (AWS/Azure/GCP), IAM reviews and secure baselines.</p>
+          </div>
+
+          <div class="card">
+            <i class="fas fa-bug"></i>
+            <h3>Malware Analysis</h3>
+            <p>Detect, remove and analyze malware. Provide forensic findings and cleanup guides.</p>
+          </div>
+
+          <div class="card">
+            <i class="fas fa-network-wired"></i>
+            <h3>Network Hardening</h3>
+            <p>Firewall / segmentation reviews, IDS tuning and secure network design guidance.</p>
+          </div>
+
+          <div class="card">
+            <i class="fas fa-search"></i>
+            <h3>SOC & Monitoring</h3>
+            <p>Log analysis, SIEM tuning and alerting to reduce noise and detect real incidents.</p>
+          </div>
+
+          <div class="card">
+            <i class="fas fa-chalkboard-teacher"></i>
+            <h3>Security Training</h3>
+            <p>Phishing simulations and developer / staff training to raise security awareness.</p>
           </div>
         </div>
       </div>
-    </header>
+    </section>
 
-    <main class="main" id="main">
-      <section id="about" class="card-3d content-card" data-tilt>
-        <div class="card-layer bg-layer"></div>
-        <div class="card-layer top-layer">
-          <h2>About</h2>
-          <p>I help startups and SMEs secure apps and infrastructure: web & API penetration testing (OWASP Top 10), cloud security reviews (AWS/Azure/GCP), malware cleanup, and incident response. I deliver redacted reports, remediation roadmaps, and verified retests.</p>
-
-          <ul class="skill-chips">
-            <li>Web & API Pentesting</li>
-            <li>Cloud Security Reviews</li>
-            <li>Malware Detection & Cleanup</li>
-            <li>Incident Response & Forensics</li>
-          </ul>
-        </div>
-      </section>
-
-      <section id="projects" class="projects-grid">
-        <h2 class="section-heading">Selected Projects</h2>
-
-        <article class="card-3d project-card" data-tilt>
-          <div class="card-layer bg-layer"></div>
-          <div class="card-layer top-layer">
-            <h3>Simulated E-commerce Pentest (redacted)</h3>
-            <p>OWASP Top 10-focused audit. Found high-priority SQLi (redacted) and stored XSS. Deliverable: redacted report + remediation checklist + verification.</p>
-          </div>
-        </article>
-
-        <article class="card-3d project-card" data-tilt>
-          <div class="card-layer bg-layer"></div>
-          <div class="card-layer top-layer">
-            <h3>WordPress Malware Cleanup</h3>
-            <p>Removed obfuscated backdoors, hardened WP config, added monitoring and WAF rules. Performed reinfection checks and follow-up monitoring steps.</p>
-          </div>
-        </article>
-
-        <article class="card-3d project-card" data-tilt>
-          <div class="card-layer bg-layer"></div>
-          <div class="card-layer top-layer">
-            <h3>Cloud Misconfiguration Review</h3>
-            <p>IAM & S3 permissions audit. Prioritized fixes and secure baseline automation scripts provided.</p>
-          </div>
-        </article>
-      </section>
-
-      <section id="services" class="card-3d content-card" data-tilt>
-        <div class="card-layer bg-layer"></div>
-        <div class="card-layer top-layer">
-          <h2>Services</h2>
-          <ul class="services-list">
-            <li>Vulnerability Assessment & Pentesting</li>
-            <li>Redacted Reporting & Remediation Roadmaps</li>
-            <li>Cloud Security Audits</li>
-            <li>Malware Analysis & Cleanup</li>
-            <li>Incident Response Playbooks</li>
-          </ul>
-        </div>
-      </section>
-
-      <section id="contact" class="card-3d contact-card" data-tilt>
-        <div class="card-layer bg-layer"></div>
-        <div class="card-layer top-layer">
-          <h2>Contact</h2>
-          <p>Email: <a href="mailto:alira6018@gmail.com">alira6018@gmail.com</a></p>
-          <p>GitHub: <a href="https://github.com/Alirazawaris" target="_blank" rel="noopener">github.com/Alirazawaris</a> · LinkedIn: <a href="#" target="_blank" rel="noopener">Coming soon</a></p>
-
-          <p class="ethics"><small>All tests and samples are redacted. I only perform security testing with written authorization.</small></p>
-
-          <!-- Optional Formspree (uncomment & replace) -->
-          <!--
-          <form method="POST" action="https://formspree.io/f/YOUR_FORMSPREE_URL" class="contact-form">
-            <label><input name="name" placeholder="Your name" required></label>
-            <label><input type="email" name="_replyto" placeholder="Your email" required></label>
-            <label><textarea name="message" placeholder="Message" required></textarea></label>
-            <button class="btn btn-primary" type="submit">Send</button>
-          </form>
-          -->
-        </div>
-      </section>
-    </main>
-
-    <footer class="footer">
-      <small>© <span id="year"></span> Ali Raza — Redacted samples available on request.</small>
-    </footer>
-  </div>
-
-  <script>
-  /**
-   * Lightweight tilt / parallax effect for .card-3d
-   * - Adds smooth mousemove-based tilt
-   * - Uses data attributes for max tilt & scale
-   * - Adds deviceorientation fallback on mobile
-   */
-
-  (function () {
-    const cards = Array.from(document.querySelectorAll('[data-tilt]'));
-    if (!cards.length) return;
-
-    // Config defaults
-    const defaultMax = 14; // degrees
-    const defaultScale = 1.02;
-    const ease = 0.12; // smoothing (0-1)
-
-    // state per card
-    const states = new Map();
-
-    cards.forEach(card => {
-      states.set(card, {
-        currentX: 0,
-        currentY: 0,
-        targetX: 0,
-        targetY: 0,
-        currentScale: 1,
-        targetScale: parseFloat(card.getAttribute('data-tilt-scale')) || defaultScale,
-        max: parseFloat(card.getAttribute('data-tilt-max')) || defaultMax,
-      });
-
-      // pointer events
-      card.addEventListener('mouseenter', () => {
-        const s = states.get(card);
-        s.currentScale = 1;
-        s.targetScale = parseFloat(card.getAttribute('data-tilt-scale')) || defaultScale;
-      });
-
-      card.addEventListener('mouseleave', () => {
-        const s = states.get(card);
-        s.targetX = 0;
-        s.targetY = 0;
-        s.targetScale = 1;
-      });
-
-      card.addEventListener('mousemove', e => {
-        const rect = card.getBoundingClientRect();
-        const cx = rect.left + rect.width / 2;
-        const cy = rect.top + rect.height / 2;
-        const relX = (e.clientX - cx) / (rect.width / 2);
-        const relY = (e.clientY - cy) / (rect.height / 2);
-        const s = states.get(card);
-        s.targetX = clamp(relY * s.max * -1, -s.max, s.max); // rotateX (inverted)
-        s.targetY = clamp(relX * s.max, -s.max, s.max); // rotateY
-      });
-
-      // touch fallback: on touchmove, approximate using touches[0]
-      card.addEventListener('touchstart', () => {
-        const s = states.get(card);
-        s.targetScale = parseFloat(card.getAttribute('data-tilt-scale')) || defaultScale;
-      }, {passive:true});
-
-      card.addEventListener('touchmove', e => {
-        const t = e.touches[0];
-        if (!t) return;
-        const rect = card.getBoundingClientRect();
-        const cx = rect.left + rect.width / 2;
-        const cy = rect.top + rect.height / 2;
-        const relX = (t.clientX - cx) / (rect.width / 2);
-        const relY = (t.clientY - cy) / (rect.height / 2);
-        const s = states.get(card);
-        s.targetX = clamp(relY * s.max * -1, -s.max, s.max);
-        s.targetY = clamp(relX * s.max, -s.max, s.max);
-      }, {passive:true});
-
-      card.addEventListener('touchend', () => {
-        const s = states.get(card);
-        s.targetX = 0;
-        s.targetY = 0;
-        s.targetScale = 1;
-      });
-    });
-
-    // Device orientation (mobile tilt)
-    if (window.DeviceOrientationEvent) {
-      window.addEventListener('deviceorientation', ev => {
-        // beta: front-back tilt [-180,180]; gamma: left-right tilt [-90,90]
-        const gamma = ev.gamma || 0; // left-right
-        const beta = ev.beta || 0; // front-back
-        cards.forEach(card => {
-          const s = states.get(card);
-          // map gamma/beta to rotation roughly (normalized)
-          s.targetY = clamp((gamma / 45) * s.max, -s.max, s.max);
-          s.targetX = clamp((beta / 45) * s.max * -1, -s.max, s.max);
-          s.targetScale = parseFloat(card.getAttribute('data-tilt-scale')) || defaultScale;
-        });
-      }, {passive:true});
-    }
-
-    // animation loop
-    function rafLoop() {
-      cards.forEach(card => {
-        const s = states.get(card);
-        // spring smoothing
-        s.currentX += (s.targetX - s.currentX) * ease;
-        s.currentY += (s.targetY - s.currentY) * ease;
-        s.currentScale += (s.targetScale - s.currentScale) * ease;
-
-        // apply transforms: rotateX, rotateY and small translateZ on layers
-        const rotX = s.currentX.toFixed(2);
-        const rotY = s.currentY.toFixed(2);
-        const scale = s.currentScale.toFixed(3);
-
-        // primary transform for the card container
-        card.style.transform = `perspective(1200px) rotateX(${rotX}deg) rotateY(${rotY}deg) scale(${scale})`;
-
-        // inner depth layers: pick by class and offset transforms
-        const bg = card.querySelector('.bg-layer');
-        const mid = card.querySelector('.mid-layer');
-        const top = card.querySelector('.top-layer');
-
-        if (bg) {
-          // deeper, inverse subtle movement
-          const bgTx = (-s.currentY * 0.22).toFixed(2);
-          const bgTy = (s.currentX * 0.22).toFixed(2);
-          bg.style.transform = `translate3d(${bgTx}px, ${bgTy}px, -40px) rotateX(${(s.currentX * 0.06).toFixed(2)}deg)`;
-        }
-        if (mid) {
-          const mdTx = (-s.currentY * 0.12).toFixed(2);
-          const mdTy = (s.currentX * 0.12).toFixed(2);
-          mid.style.transform = `translate3d(${mdTx}px, ${mdTy}px, -18px) rotateX(${(s.currentX * 0.04).toFixed(2)}deg)`;
-        }
-        if (top) {
-          // top layer gets tiny parallax shift (to keep text readable)
-          const tpTx = (-s.currentY * 0.04).toFixed(2);
-          const tpTy = (s.currentX * 0.04).toFixed(2);
-          top.style.transform = `translate3d(${tpTx}px, ${tpTy}px, 0px)`;
-        }
-      });
-      requestAnimationFrame(rafLoop);
-    }
-    requestAnimationFrame(rafLoop);
-
-    // Utility
-    function clamp(v, a, b) { return Math.max(a, Math.min(b, v)); }
-  })();
-  </script>
-
-  <script>document.getElementById('year').textContent = new Date().getFullYear();</script>
-</body>
-</html>
+    <!-- PORTFOLIO -->
+    <section id="portfolio" aria-label="Portfolio">
+      <div style="max-width:1100px;margin:0 auto">
+        <h2 style="font-family:Orbitron, sans-serif;color:var(--accent1)">Selected Work</h2>
+        <p style="color:#bfd8f1;max-width:900px">Redacted case studies and summaries demonstrating impac
