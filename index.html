@@ -5,21 +5,40 @@
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>CyberSecure Solutions — Company Portfolio</title>
   <meta name="description" content="CyberSecure Solutions — Team of ethical hackers providing pentests, cloud audits, malware removal and incident response." />
-  <meta property="og:title" content="CyberSecure Solutions">
-  <meta property="og:description" content="We secure applications, cloud and networks — redacted reports available.">
-  <meta property="og:image" content="https://Alirazawaris.github.io/og-image.png">
-  <meta name="twitter:card" content="summary_large_image">
 
-  <!-- FontAwesome icons (free kit) -->
-  <script src="https://kit.fontawesome.com/a2e0e9e6f2.js" crossorigin="anonymous"></script>
+  <!-- Font Awesome (reliable CDN) -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-
+  qVU6Y3bKqNqj0eEb5t0Qz1m9f0m9w1k+V6c5Vbn3Hd8xgSg6v8e8vN1a2Q6wK7y6pG3k9b3qJ2w8s5s5a6u4w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 
-  <!-- Main stylesheet -->
+  <!-- link to your main CSS (keeps the VIP look you already have) -->
   <link rel="stylesheet" href="styles.css">
+
+  <!-- tiny critical tweaks to make transitions & icon layout more obvious immediately -->
+  <style>
+    /* clearer visible transitions & icon sizing */
+    .service-card { transition: transform .36s cubic-bezier(.2,.9,.2,1), box-shadow .36s, opacity .36s; opacity: 1; }
+    .service-card:hover { transform: translateY(-12px) scale(1.035); box-shadow: 0 34px 90px rgba(2,8,23,0.72); }
+    .icon-wrap { width:84px; height:84px; border-radius:16px; display:flex; align-items:center; justify-content:center; margin-bottom:10px; transition: transform .24s, box-shadow .24s; }
+    .icon-wrap i { font-size:28px; color:var(--accent1); }
+    .service-card:hover .icon-wrap { transform: translateY(-6px) scale(1.06); box-shadow: 0 18px 40px rgba(0,247,255,0.08); }
+
+    /* portfolio hover stronger */
+    .portfolio-item:hover { transform: translateY(-10px); box-shadow: 0 42px 110px rgba(2,8,23,0.72); }
+    .portfolio-cta { transition: transform .22s, box-shadow .22s; }
+    .portfolio-cta:hover { transform:translateY(-4px); box-shadow: 0 14px 38px rgba(0,247,255,0.12); }
+
+    /* responsive icon layout safety */
+    .service-grid { align-items:stretch; }
+    .service-card { display:flex; flex-direction:column; align-items:center; text-align:center; }
+
+    /* make nav active links obvious */
+    .nav a.active { background: linear-gradient(90deg, var(--accent1), var(--accent2)); color:#031025; box-shadow:0 12px 30px rgba(0,247,255,0.06); }
+  </style>
 </head>
 <body>
-  <!-- NAVBAR (fixed) -->
+  <!-- NAVBAR -->
   <header class="navbar" role="banner">
-    <div class="brand" aria-hidden="false">CyberSecure Solutions</div>
+    <div class="brand">CyberSecure Solutions</div>
 
     <nav aria-label="Main navigation" class="nav">
       <ul>
@@ -36,10 +55,9 @@
     </button>
   </header>
 
-  <!-- PAGE CONTENT -->
   <main id="main" tabindex="-1">
     <!-- HERO -->
-    <section id="home" class="section hero" aria-label="Home">
+    <section id="home" class="section hero">
       <div class="container hero-grid">
         <div class="hero-content">
           <h1 class="hero-title">CyberSecure Solutions</h1>
@@ -48,17 +66,9 @@
             <a class="btn btn-primary" href="#contact">Get a Quote</a>
             <a class="btn btn-outline" href="#portfolio">See Work</a>
           </div>
-          <div class="trusted">
-            <span class="trusted-label">Trusted by</span>
-            <div class="trusted-list">
-              <span class="chip">Startup</span>
-              <span class="chip">SaaS</span>
-              <span class="chip">Healthcare</span>
-            </div>
-          </div>
         </div>
 
-        <aside class="hero-card" aria-hidden="false">
+        <aside class="hero-card">
           <div class="stat">
             <div class="stat-value">100+</div>
             <div class="stat-label">Engagements</div>
@@ -67,13 +77,13 @@
             <div class="stat-value">90%</div>
             <div class="stat-label">Fix Acceptance</div>
           </div>
-          <div class="stat small-note">Redacted reports available — NDA on request</div>
+          <div class="small-note">Redacted reports available — NDA on request</div>
         </aside>
       </div>
     </section>
 
     <!-- ABOUT -->
-    <section id="about" class="section" aria-label="About">
+    <section id="about" class="section">
       <div class="container">
         <div class="split">
           <div class="card about-card">
@@ -101,44 +111,43 @@
     </section>
 
     <!-- SERVICES -->
-    <section id="services" class="section" aria-label="Services">
+    <section id="services" class="section">
       <div class="container">
         <h2 class="section-title center">Our Services</h2>
 
-        <!-- responsive grid: 1 column mobile, 2 tablet, 3 desktop -->
         <div class="service-grid" role="list">
-          <article class="service-card" role="listitem">
-            <div class="icon-wrap"><i class="fas fa-user-secret" aria-hidden="true"></i></div>
+          <article class="service-card card" role="listitem">
+            <div class="icon-wrap"><i class="fa-solid fa-user-secret" aria-hidden="true"></i></div>
             <h3>Penetration Testing</h3>
             <p>Web, API and infrastructure pentests with prioritized remediations and verification retests.</p>
           </article>
 
-          <article class="service-card" role="listitem">
-            <div class="icon-wrap"><i class="fas fa-cloud" aria-hidden="true"></i></div>
+          <article class="service-card card" role="listitem">
+            <div class="icon-wrap"><i class="fa-solid fa-cloud" aria-hidden="true"></i></div>
             <h3>Cloud Security</h3>
             <p>Cloud configuration audits, IAM reviews and secure baseline automation for AWS/Azure/GCP.</p>
           </article>
 
-          <article class="service-card" role="listitem">
-            <div class="icon-wrap"><i class="fas fa-bug" aria-hidden="true"></i></div>
+          <article class="service-card card" role="listitem">
+            <div class="icon-wrap"><i class="fa-solid fa-bug" aria-hidden="true"></i></div>
             <h3>Malware Analysis</h3>
             <p>Detect, remove, and analyze malware with forensic findings and cleanup guidance.</p>
           </article>
 
-          <article class="service-card" role="listitem">
-            <div class="icon-wrap"><i class="fas fa-network-wired" aria-hidden="true"></i></div>
+          <article class="service-card card" role="listitem">
+            <div class="icon-wrap"><i class="fa-solid fa-network-wired" aria-hidden="true"></i></div>
             <h3>Network Hardening</h3>
             <p>Firewall & segmentation reviews, IDS tuning, and network architecture guidance.</p>
           </article>
 
-          <article class="service-card" role="listitem">
-            <div class="icon-wrap"><i class="fas fa-search" aria-hidden="true"></i></div>
+          <article class="service-card card" role="listitem">
+            <div class="icon-wrap"><i class="fa-solid fa-magnifying-glass" aria-hidden="true"></i></div>
             <h3>SOC & Monitoring</h3>
             <p>Log analysis, SIEM tuning and alerting to detect real incidents quickly.</p>
           </article>
 
-          <article class="service-card" role="listitem">
-            <div class="icon-wrap"><i class="fas fa-chalkboard-teacher" aria-hidden="true"></i></div>
+          <article class="service-card card" role="listitem">
+            <div class="icon-wrap"><i class="fa-solid fa-chalkboard-user" aria-hidden="true"></i></div>
             <h3>Security Training</h3>
             <p>Phishing simulations and developer/staff training to raise security awareness.</p>
           </article>
@@ -147,40 +156,39 @@
     </section>
 
     <!-- PORTFOLIO -->
-    <section id="portfolio" class="section" aria-label="Portfolio">
+    <section id="portfolio" class="section">
       <div class="container">
         <h2 class="section-title center">Selected Work</h2>
         <p class="muted center">Redacted case studies and summaries demonstrating impact — full reports shared under NDA.</p>
 
         <div class="portfolio-grid">
-          <!-- item -->
           <article class="portfolio-item">
-            <img src="assets/portfolio1.jpg" alt="E-commerce pentest (redacted) screenshot" class="portfolio-thumb">
+            <img src="assets/portfolio1.jpg" alt="E-commerce pentest thumbnail" class="portfolio-thumb">
             <div class="portfolio-meta">
               <h4>Simulated E-commerce Pentest (redacted)</h4>
               <p>Identified SQL injection and session issues; prioritized fixes and verified remediations.</p>
               <div class="tags"><span class="tag">SQLi</span><span class="tag">OWASP</span></div>
-              <a class="btn btn-ghost portfolio-cta" href="downloads/ecom-redacted.pdf" target="_blank" rel="noopener">View Case</a>
+              <a class="btn portfolio-cta portfolio-cta" href="downloads/ecom-redacted.pdf" target="_blank" rel="noopener">View Case</a>
             </div>
           </article>
 
           <article class="portfolio-item">
-            <img src="assets/portfolio2.jpg" alt="WordPress cleanup screenshot" class="portfolio-thumb">
+            <img src="assets/portfolio2.jpg" alt="WordPress cleanup thumbnail" class="portfolio-thumb">
             <div class="portfolio-meta">
               <h4>WordPress Malware Cleanup</h4>
               <p>Removed obfuscated backdoors and hardened configuration; added monitoring & WAF tuning.</p>
               <div class="tags"><span class="tag">WordPress</span><span class="tag">Malware</span></div>
-              <a class="btn btn-ghost portfolio-cta" href="downloads/wp-cleanup-redacted.pdf" target="_blank" rel="noopener">View Case</a>
+              <a class="btn portfolio-cta" href="downloads/wp-cleanup-redacted.pdf" target="_blank" rel="noopener">View Case</a>
             </div>
           </article>
 
           <article class="portfolio-item">
-            <img src="assets/portfolio3.jpg" alt="Cloud permissions review screenshot" class="portfolio-thumb">
+            <img src="assets/portfolio3.jpg" alt="Cloud review thumbnail" class="portfolio-thumb">
             <div class="portfolio-meta">
               <h4>Cloud Misconfiguration Review</h4>
               <p>Audited IAM & S3 permissions, produced prioritized remediation and automation scripts.</p>
               <div class="tags"><span class="tag">Cloud</span><span class="tag">IAM</span></div>
-              <a class="btn btn-ghost portfolio-cta" href="downloads/cloud-review-redacted.pdf" target="_blank" rel="noopener">View Case</a>
+              <a class="btn portfolio-cta" href="downloads/cloud-review-redacted.pdf" target="_blank" rel="noopener">View Case</a>
             </div>
           </article>
         </div>
@@ -188,7 +196,7 @@
     </section>
 
     <!-- CONTACT -->
-    <section id="contact" class="section" aria-label="Contact">
+    <section id="contact" class="section">
       <div class="container">
         <div class="contact-grid">
           <div class="card contact-card">
@@ -196,27 +204,23 @@
             <p class="muted">Let's discuss a scope and plan that fits your risk profile.</p>
             <p>Email: <a href="mailto:alira6018@gmail.com">alira6018@gmail.com</a></p>
             <p>GitHub: <a href="https://github.com/Alirazawaris" target="_blank" rel="noopener">Alirazawaris</a></p>
-            <p>LinkedIn: <a href="#" target="_blank" rel="noopener">Coming soon</a></p>
             <p class="small-note">All case studies are redacted. Testing is only performed with written authorization.</p>
           </div>
 
-          <form class="card contact-form" action="https://formspree.io/f/YOUR_FORMSPREE_URL" method="POST">
-            <label class="field">
-              <span>Name</span>
-              <input name="name" required>
-            </label>
-            <label class="field">
-              <span>Email</span>
-              <input name="_replyto" type="email" required>
-            </label>
-            <label class="field">
-              <span>Message</span>
-              <textarea name="message" rows="5" required></textarea>
-            </label>
+          <!-- FORM: replace the action with your Formspree endpoint (instructions below) -->
+          <form class="card contact-form" action="https://formspree.io/f/YOUR_FORMSPREE_ID" method="POST">
+            <label class="field"><span>Name</span><input name="name" required></label>
+            <label class="field"><span>Email</span><input name="_replyto" type="email" required></label>
+            <label class="field"><span>Message</span><textarea name="message" rows="5" required></textarea></label>
+
+            <!-- optional: honeypot anti-spam -->
+            <input type="text" name="_gotcha" style="display:none">
+
             <div style="display:flex;gap:12px;align-items:center;margin-top:10px">
               <button class="btn btn-primary" type="submit">Send Message</button>
               <small class="muted">Or email directly</small>
             </div>
+            <div id="form-status" aria-live="polite" style="margin-top:10px;color:var(--muted)"></div>
           </form>
         </div>
       </div>
@@ -227,60 +231,87 @@
     <small>© <span id="year"></span> CyberSecure Solutions — All Rights Reserved</small>
   </footer>
 
-  <!-- SCRIPTS: nav toggle, smooth scroll w/ offset, active link -->
   <script>
     // fill year
     document.getElementById('year').textContent = new Date().getFullYear();
 
-    // responsive nav toggle for small screens
+    // Nav toggle for mobile
     const navToggle = document.getElementById('nav-toggle');
     const nav = document.querySelector('.nav');
-    navToggle.addEventListener('click', () => {
-      const expanded = navToggle.getAttribute('aria-expanded') === 'true';
-      navToggle.setAttribute('aria-expanded', !expanded);
-      nav.classList.toggle('open');
-    });
+    if (navToggle) {
+      navToggle.addEventListener('click', () => {
+        const expanded = navToggle.getAttribute('aria-expanded') === 'true';
+        navToggle.setAttribute('aria-expanded', !expanded);
+        nav.classList.toggle('open');
+      });
+    }
 
-    // smooth scroll with header offset
+    // Smooth scroll w/ header offset & active link highlight
     (function () {
       const header = document.querySelector('.navbar');
       const headerHeight = header.offsetHeight;
       const links = document.querySelectorAll('a[href^="#"]');
+      const sections = document.querySelectorAll('section[id]');
 
       links.forEach(link => {
         link.addEventListener('click', (e) => {
-          const targetId = link.getAttribute('href');
-          if (!targetId.startsWith('#') || targetId === '#') return;
-          const target = document.querySelector(targetId);
+          const href = link.getAttribute('href');
+          if (!href.startsWith('#')) return;
+          const target = document.querySelector(href);
           if (!target) return;
           e.preventDefault();
           const top = target.getBoundingClientRect().top + window.scrollY - headerHeight - 8;
           window.scrollTo({ top, behavior: 'smooth' });
-          // close nav on mobile
           if (nav.classList.contains('open')) nav.classList.remove('open');
           if (navToggle) navToggle.setAttribute('aria-expanded', 'false');
         });
       });
 
-      // active-link on scroll
-      const sections = document.querySelectorAll('section[id]');
       function onScroll() {
         const scrollPos = window.scrollY + headerHeight + 20;
         sections.forEach(sec => {
           const top = sec.offsetTop;
           const bottom = top + sec.offsetHeight;
-          const id = sec.getAttribute('id');
-          const link = document.querySelector('.nav a[href="#' + id + '"]');
+          const link = document.querySelector('.nav a[href="#' + sec.id + '"]');
           if (!link) return;
           if (scrollPos >= top && scrollPos <= bottom) {
             link.classList.add('active');
-          } else {
-            link.classList.remove('active');
-          }
+          } else link.classList.remove('active');
         });
       }
       window.addEventListener('scroll', onScroll, { passive: true });
       onScroll();
+    })();
+
+    // Optional: Form status UI (works with Formspree auto redirect or ajax)
+    (function () {
+      const form = document.querySelector('.contact-form');
+      const status = document.getElementById('form-status');
+      if (!form) return;
+
+      // Try to submit via fetch to stay on page (Formspree supports CORS)
+      form.addEventListener('submit', async (e) => {
+        e.preventDefault();
+        const action = form.getAttribute('action');
+        if (!action || action.includes('YOUR_FORMSPREE_ID')) {
+          status.textContent = 'Form not configured — replace action with your Formspree endpoint.';
+          return;
+        }
+        status.textContent = 'Sending…';
+        const data = new FormData(form);
+        try {
+          const res = await fetch(action, { method:'POST', body: data, headers: {'Accept':'application/json'} });
+          if (res.ok) {
+            status.textContent = 'Message sent — we will reply shortly.';
+            form.reset();
+          } else {
+            const json = await res.json();
+            status.textContent = json?.error || 'Sending failed. Please email directly.';
+          }
+        } catch (err) {
+          status.textContent = 'Network error. Please email directly.';
+        }
+      });
     })();
   </script>
 </body>
